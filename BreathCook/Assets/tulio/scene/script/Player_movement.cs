@@ -4,26 +4,49 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
+   
+
     [Header("movimentacao")]
     public float moveSpeed = 5f;
 
     [Header("Rigdbody")]
     public Rigidbody2D rb;
+    public SpriteRenderer sr;
 
     [Header("")]
     Vector2 movement;
 
     [Header("animator")]
     private Animator animator;
-  
+
+    [Header("interacao")]
+    public GameObject interacao;
+    private bool tacolidindo = false;
+    public KeyCode botaointeracao = KeyCode.X;
+    public KeyCode botaointeracaosair = KeyCode.Z;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
-  
 
-   
+
+    // interacao
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("balcaocomida"))
+        {
+            tacolidindo = true;
+        }
+        else
+        {
+            tacolidindo = false;
+        }
+       
+     
+    }
+
 
     private void FixedUpdate()
     {
@@ -31,25 +54,35 @@ public class Player_movement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(moveSpeed * movement.x,moveSpeed * movement.y);   
+        rb.velocity = new Vector2(moveSpeed * movement.x, moveSpeed * movement.y);
 
-        if (rb.velocity.magnitude !=  0)
+        if (movement.x> 0)
         {
             animator.SetInteger("player", 1);
+            sr.flipX = false;
         }
-        else
+        if (rb.velocity.magnitude == 0)
         {
             animator.SetInteger("player", 0);
         }
+        if (movement.x < 0)
+        {
+            animator.SetInteger("player", 1);
+            sr.flipX = true;
+        }
 
-        //interacao
+        if (tacolidindo && Input.GetKeyDown(botaointeracao))
+        {
+            interacao.SetActive(true);
+            Camera.main.transform.position = new Vector3(20, 0, 0);
+        }
 
-      //  if (Input.GetKeyDown(KeyCode.X)
-         //    {
+        if (Input.GetKeyDown(botaointeracaosair)) 
+        {
+            interacao.SetActive(false);
+            Camera.main.transform.position = new Vector3(0.037f, 0.11f, 0);
+        }
         
-       // }
-
-
     }
 
 
