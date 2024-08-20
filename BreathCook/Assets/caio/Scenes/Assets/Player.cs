@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 
     public Transform npc;
 
-    //DialogueSystem dialogueSystem;
+    DialogueSystem dialogueSystem;
 
     public float speed = 10f;    
 
@@ -17,7 +17,7 @@ public class Player : MonoBehaviour {
 
     private void Awake() {
 
-        //dialogueSystem = FindObjectOfType<DialogueSystem>();    
+        dialogueSystem = FindObjectOfType<DialogueSystem>();    
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -42,9 +42,9 @@ public class Player : MonoBehaviour {
 
         transform.position += (Vector3)velocity * Time.deltaTime;
 
-        if(Mathf.Abs(transform.position.x - npc.position.x) < 2.0f) {
+        if(Mathf.Abs(transform.position.x - npc.position.x) < 2.5f) {
             if(Input.GetKeyDown(KeyCode.E)) {
-                //dialogueSystem.Next();
+                dialogueSystem.Next();
             }
         }
 

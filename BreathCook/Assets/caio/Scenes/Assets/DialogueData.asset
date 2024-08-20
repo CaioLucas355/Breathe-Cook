@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: DialogueData
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: Cavaleiro
+    text: "Boa noite, senhor. A jornada foi longa e \xE1rdua. Poderia me oferecer
+      um gole de seu vinho?"
+  - name: Viajante
+    text: "Com prazer, cavaleiro. Sente-se. Uma ta\xE7a de vinho \xE9 sempre bem-vinda
+      para um guerreiro como voc\xEA."
+  - name: Cavaleiro
+    text: "Agrade\xE7o sua hospitalidade. Por onde anda um homem como voc\xEA, t\xE3o
+      pr\xF3ximo de terras selvagens?"
+  - name: Viajante
+    text: "Sou apenas um viajante, em busca de conhecimento e novas experi\xEAncias.
+      E voc\xEA, cavaleiro, aonde o destino o leva?"
+  - name: Cavaleiro
+    text: "A um torneio, senhor. Busco a gl\xF3ria e a honra de meu reino. E voc\xEA?
+      N\xE3o teme as perigosas estradas?"
+  - name: Viajante
+    text: "O medo \xE9 um mau companheiro de jornada, cavaleiro. A vida \xE9 feita
+      de desafios, e \xE9 nos enfrentando que nos tornamos mais fortes."
+  - name: Cavaleiro
+    text: "Palavras s\xE1bias, senhor. Um brinde, ent\xE3o, \xE0 coragem e \xE0 aventura!"
+  - name: Viajante
+    text: "\xC0 coragem e \xE0 aventura! E que os deuses o guiem em sua jornada."
+  - name: Cavaleiro
+    text: Muito obrigado.

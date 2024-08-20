@@ -200,6 +200,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1918786172}
     - target: {fileID: 4130314026235457128, guid: ba8ace8fb8db7184a8199445124ffda0, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1918786181}
+    - target: {fileID: 4130314026235457128, guid: ba8ace8fb8db7184a8199445124ffda0, type: 3}
       propertyPath: interacao
       value: 
       objectReference: {fileID: 803391724}
@@ -2237,6 +2241,11 @@ CapsuleCollider2D:
   m_Offset: {x: -0.002168268, y: -0.37958127}
   m_Size: {x: 0.7434017, y: 1.2408375}
   m_Direction: 0
+--- !u!212 &1918786181 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3557590898458488979, guid: ba8ace8fb8db7184a8199445124ffda0, type: 3}
+  m_PrefabInstance: {fileID: 178440487}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960204420
 GameObject:
   m_ObjectHideFlags: 0
