@@ -12,7 +12,7 @@ public class MenuPincipalManager : MonoBehaviour
     public void Jogar()
     {
         SceneManager.LoadScene(nomeDoLevelDeJogo);
-    }
+    }   
 
     public void AbrirOptions()
     {
