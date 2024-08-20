@@ -74,13 +74,13 @@ public class Player_movement : MonoBehaviour
         if (tacolidindo && Input.GetKeyDown(botaointeracao))
         {
             interacao.SetActive(true);
-            Camera.main.transform.position = new Vector3(20, 0, 0);
+            Camera.main.transform.position = new Vector3(-18.74f, 0.11f, -10f);
         }
 
         if (Input.GetKeyDown(botaointeracaosair)) 
         {
-            interacao.SetActive(false);
-            Camera.main.transform.position = new Vector3(0.037f, 0.11f, 0);
+            interacao.SetActive(true);
+            Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
         }
         
     }

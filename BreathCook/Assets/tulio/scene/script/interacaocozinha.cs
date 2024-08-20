@@ -5,9 +5,12 @@ using UnityEngine;
 
 public class interacaocozinha : MonoBehaviour
 {
+    public string destinationtag = "dd";
     Vector3 offset;
     Collider2D collider2D;
-    public string destinationTag = "DropArea";
+
+    //determinar qual é o ingrediente - agua, camomila, etc
+    public int tipoIngrediente;
 
     void Awake()
    {
@@ -29,16 +32,25 @@ public class interacaocozinha : MonoBehaviour
         collider2D.enabled = false;
         var rayDrigin = Camera.main.transform.position;
         var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
-        RaycastHit2D hitInfo;
-        if (hitInfo = Physics2D.Raycast(rayDrigin, rayDirection))
+        RaycastHit2D hitinfo;
+        if (hitinfo = Physics2D.Raycast(rayDrigin, rayDirection))
         {
+            if (hitinfo.transform.tag == destinationtag)
+            { 
+                transform.position = hitinfo.transform.position + new Vector3(0,0,0.01f);
 
-            if (hitInfo.transform.CompareTag(destinationTag))
-            {
-                transform.position = hitInfo.transform.position + new Vector3(0, 0, -0.01f);
+                //chama a checagem da receita no script da receita baseado na posição que largou o ingrediente
+                switch (destinationtag)
+                {
+                    case "bebida":
+                        //verificar no script da receita
+                        receita.instance.fazerbebida(tipoIngrediente);
+                        break;
+                }
             }
+        
         }
-            collider2D.enabled = true;
+           collider2D.enabled = true;
     }
 
     Vector3 MouseWorldPosition()
