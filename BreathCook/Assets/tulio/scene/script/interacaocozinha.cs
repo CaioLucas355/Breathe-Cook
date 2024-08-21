@@ -11,11 +11,18 @@ public class interacaocozinha : MonoBehaviour
 
     //determinar qual é o ingrediente - agua, camomila, etc
     public int tipoIngrediente;
+    public GameObject comidacolocada;
 
+    public Vector3 posicaoinicial;
     void Awake()
    {
         collider2D = GetComponent<Collider2D>();      
    }
+
+    private void Start()
+    {
+        posicaoinicial = transform.position;
+    }
 
     void OnMouseDown()
     {
