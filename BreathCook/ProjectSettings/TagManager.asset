@@ -12,6 +12,9 @@ TagManager:
   - mesaposicao
   - player
   - pessoaAentregar
+  - comidafeita
+  - comidacomcliente
+  - entrada
   layers:
   - Default
   - TransparentFX

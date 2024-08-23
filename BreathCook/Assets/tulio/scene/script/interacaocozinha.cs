@@ -53,6 +53,16 @@ public class interacaocozinha : MonoBehaviour
                         //verificar no script da receita
                         receita.instance.fazerbebida(tipoIngrediente);
                         break;
+
+                    case "entrada":
+                        //verificar no script da receita
+                        receita.instance.fazerentrada(tipoIngrediente);
+                        break;
+
+                    case "sobremesa":
+                        //verificar no script da receita
+                        receita.instance.fazersobremesa(tipoIngrediente);
+                        break;
                 }
             }
         

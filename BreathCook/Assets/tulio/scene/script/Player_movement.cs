@@ -59,7 +59,7 @@ public class Player_movement : MonoBehaviour
         if (movement.x> 0)
         {
             animator.SetInteger("player", 1);
-            sr.flipX = false;
+             sr.flipX = true;
         }
         if (rb.velocity.magnitude == 0)
         {
@@ -68,13 +68,15 @@ public class Player_movement : MonoBehaviour
         if (movement.x < 0)
         {
             animator.SetInteger("player", 1);
-            sr.flipX = true;
+            sr.flipX = false;
         }
 
         if (tacolidindo && Input.GetKeyDown(botaointeracao))
         {
             interacao.SetActive(true);
             Camera.main.transform.position = new Vector3(-18.74f, 0.11f, -10f);
+            GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
+            Destroy(prefab_comidafeita);
         }
 
         if (Input.GetKeyDown(botaointeracaosair)) 

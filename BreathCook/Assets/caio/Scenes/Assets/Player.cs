@@ -43,8 +43,12 @@ public class Player : MonoBehaviour {
         transform.position += (Vector3)velocity * Time.deltaTime;
 
         if(Mathf.Abs(transform.position.x - npc.position.x) < 2.5f) {
-            if(Input.GetKeyDown(KeyCode.E)) {
-                dialogueSystem.Next();
+            if (Mathf.Abs(transform.position.y - npc.position.y) < 2.5f)
+            {
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    dialogueSystem.Next();
+                }
             }
         }
 

@@ -6,6 +6,9 @@ using UnityEngine;
 public class comidafeita : MonoBehaviour
 {
     // CircleCollider2D circleCollider;
+    [Header("comida:")]
+    public int comida;
+
     [Header("saber oque seguir")]
     private GameObject playerposicao;
 
@@ -58,6 +61,7 @@ public class comidafeita : MonoBehaviour
                 Debug.Log("tasoutando");
                 transform.position = mesaposicao.transform.position;
                 tasegurando = false;
+                gameObject.tag = "comidacomcliente";
             }
         }
     }
