@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class receita : MonoBehaviour
+ public class receita : MonoBehaviour
 {
     public static receita instance;
     [Header("botao para mandar comida")]
@@ -14,7 +14,7 @@ public class receita : MonoBehaviour
     private int mandarqual = 0;
     public GameObject prato;
     //checar se oo ingrediente está na posição para ser feita a receita, caso não tiver ele retornara falso
-    public bool [] combinacao;
+    public bool[] combinacao;
     private void Awake()
     {
         instance = this;
@@ -22,16 +22,16 @@ public class receita : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void fazerbebida(int ingrediente)
-    {
+     {
         switch (ingrediente)
         {
             case 0:
@@ -39,15 +39,25 @@ public class receita : MonoBehaviour
                 //se tiver ele completa a receita cha de camomila
                 //senao ele coloca a agua como verdadeiro para sinalizar que esta na posicao para fazer a receita
                 if (combinacao[1] == true)
-                {             
+                {
                     FinalizarCombinacao(0);
+                }
+                else if (combinacao[2] == true)
+                {
+                    FinalizarCombinacao(1);
+                }
+                else if (combinacao[5] == true)
+                {
+                    FinalizarCombinacao(3);
                 }
                 else
                 {
                     combinacao[0] = true;
-                }            
-            break;
-               case 1:
+                }
+                break;
+
+
+            case 1:
                 if (combinacao[0] == true)
                 {
                     FinalizarCombinacao(0);
@@ -57,53 +67,272 @@ public class receita : MonoBehaviour
                     combinacao[1] = true;
                 }
                 break;
+
+
+
+
             case 2:
 
-                if (combinacao[3] == true)
+                if (combinacao[3] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[2] = true;
+                }
+
+                break;
+
+
+            case 3:
+
+                if (combinacao[2] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[3] = true;
+                }
+
+                break;
+
+
+            case 4:
+
+                if (combinacao[2] == true && combinacao[3] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[4] = true;
+                }
+
+                break;
+            case 5:
+
+                if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(3);
+                }
+                else
+                {
+                    combinacao[5] = true;
+                }
+
+                break;
+
+        }
+
+        
+     }
+
+    public void fazerentrada(int ingrediente)
+    {
+        switch (ingrediente)
+        {
+            case 0:
+                //verifica se a camomila ja esta posicionada
+                //se tiver ele completa a receita cha de camomila
+                //senao ele coloca a agua como verdadeiro para sinalizar que esta na posicao para fazer a receita
+                if (combinacao[1] == true)
                 {
                     FinalizarCombinacao(0);
+                }
+                else if (combinacao[2] == true)
+                {
+                    FinalizarCombinacao(1);
+                }
+                else if (combinacao[5] == true)
+                {
+                    FinalizarCombinacao(3);
                 }
                 else
                 {
                     combinacao[0] = true;
                 }
+                break;
+
+
+            case 1:
+                if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(0);
+                }
+                else
+                {
+                    combinacao[1] = true;
+                }
+                break;
+
+
+
+
+            case 2:
+
+                if (combinacao[3] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[2] = true;
+                }
+
+                break;
+
+
+            case 3:
+
+                if (combinacao[2] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[3] = true;
+                }
+
+                break;
+
+
+            case 4:
+
+                if (combinacao[2] == true && combinacao[3] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[4] = true;
+                }
+
+                break;
+            case 5:
+
+                if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(3);
+                }
+                else
+                {
+                    combinacao[5] = true;
+                }
 
                 break;
 
         }
-    
-        // if (combinacao[1] != false)
-        //  {
-        //       FinalizarCombinacao(0);
-        //   }
-        //   else
-        //   {
-        //       combinacao[0] = true;
-        //   }
-        //   break;
 
-        //        case 1:
-        //   if (combinacao[0] != false)
-        //    {
-        //       FinalizarCombinacao(0);
-        //   }
-        //   else
-        //   {
-        //    combinacao[1] = true;
-        // }
-        //   break;
+
     }
-     
-        public void FinalizarCombinacao(int comb)
-        {
-           switch(comb)
+
+    public void fazersobremesa(int ingrediente)
+    {
+        switch (ingrediente)
         {
             case 0:
-                Instantiate(comida[0], prato.transform.position, Quaternion.identity);
-                Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
+                //verifica se a camomila ja esta posicionada
+                //se tiver ele completa a receita cha de camomila
+                //senao ele coloca a agua como verdadeiro para sinalizar que esta na posicao para fazer a receita
+                if (combinacao[1] == true)
+                {
+                    FinalizarCombinacao(0);
+                }
+                else if (combinacao[2] == true)
+                {
+                    FinalizarCombinacao(1);
+                }
+                else if (combinacao[5] == true)
+                {
+                    FinalizarCombinacao(3);
+                }
+                else
+                {
+                    combinacao[0] = true;
+                }
+                break;
+
+
+            case 1:
+                if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(0);
+                }
+                else
+                {
+                    combinacao[1] = true;
+                }
+                break;
+
+
+
+
+            case 2:
+
+                if (combinacao[3] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[2] = true;
+                }
 
                 break;
+
+
+            case 3:
+
+                if (combinacao[2] == true && combinacao[4] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[3] = true;
+                }
+
+                break;
+
+
+            case 4:
+
+                if (combinacao[2] == true && combinacao[3] == true)
+                {
+                    FinalizarCombinacao(2);
+                }
+                else
+                {
+                    combinacao[4] = true;
+                }
+
+                break;
+            case 5:
+
+                if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(3);
+                }
+                else
+                {
+                    combinacao[5] = true;
+                }
+
+                break;
+
         }
+
+
+    }
+
+    public void FinalizarCombinacao(int comb)
+    {
+
+        Instantiate(comida[comb], prato.transform.position, Quaternion.identity);
+        Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
+
         for (int i = 0; i < ingrediente.Length; i++)
         {
             ingrediente[i].gameObject.transform.position = ingrediente[i].posicaoinicial;
@@ -111,7 +340,7 @@ public class receita : MonoBehaviour
         for (int i = 0; i < combinacao.Length; i++)
         {
             combinacao[i] = false;
-        }  
         }
-    //fazer o reset dos ingredientes e spanar o objeto na parte do restaurante
     }
+    //fazer o reset dos ingredientes e spanar o objeto na parte do restaurante
+}
