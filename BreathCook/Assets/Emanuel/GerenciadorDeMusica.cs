@@ -40,7 +40,7 @@ public class GerenciadordeMusica : MonoBehaviour
         _beenPlayed = new bool[songs.Length];
 
         if (!_audiosource.isPlaying)
-            ChangeSong(Random.Range(0, songs.Length));
+            ChangeSongRandom(Random.Range(0, songs.Length));
     }
 
     // Update is called once per frame
@@ -52,12 +52,12 @@ public class GerenciadordeMusica : MonoBehaviour
             _trackTimer += 1 * Time.deltaTime;
 
         if (!_audiosource.isPlaying || _trackTimer >= _audiosource.clip.length || Input.GetKeyDown(KeyCode.Space))
-            ChangeSong(Random.Range(0, songs.Length));
+            ChangeSongRandom(Random.Range(0, songs.Length));
 
         Reset();
     }
 
-    public void ChangeSong(int songPicked)
+    public void ChangeSongRandom(int songPicked)
     {
         if (!_beenPlayed[songPicked])
 
@@ -70,6 +70,14 @@ public class GerenciadordeMusica : MonoBehaviour
         }
         else
             _audiosource.Stop();
+    }
+    public void ChangeSong(int songPicked)
+    {
+        _trackTimer = 0;
+        _songsPlayed++;
+        _beenPlayed[songPicked] = true;
+        _audiosource.clip = songs[songPicked];
+        _audiosource.Play();
     }
 
     private void Reset()
