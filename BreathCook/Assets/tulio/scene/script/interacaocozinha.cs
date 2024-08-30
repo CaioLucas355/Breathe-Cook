@@ -65,6 +65,11 @@ public class interacaocozinha : MonoBehaviour
                         break;
                 }
             }
+            else
+            {
+                Debug.Log(hitinfo.transform.tag);
+                transform.position = posicaoinicial;
+            }
         
         }
            collider2D.enabled = true;

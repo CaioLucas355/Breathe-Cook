@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class comidafeita : MonoBehaviour
 {
@@ -38,31 +39,47 @@ public class comidafeita : MonoBehaviour
         }
     }
 
+
+
+
+
     void OnTriggerStay2D(Collider2D collision)
     {
+        
+      
+
         if (collision.tag == null) return;
 
         if (collision.CompareTag("player"))
         {
-            if (tasegurando == false && Input.GetKeyDown(botaosegurar))
+            
+            if (tasegurando == false && Input.GetKey(botaosegurar) )
             {
                 tasegurando = true;
-                Debug.Log("tasegurando");
-
-
                 
+
+
+
             }
         }
+
 
         if (collision.CompareTag("pessoaAentregar"))
         {
-            if (tasegurando == true && Input.GetKeyDown(botaosoutar))
+            if (tasegurando == true && Input.GetKey(botaosoutar) )
             {
-                Debug.Log("tasoutando");
+               
                 transform.position = mesaposicao.transform.position;
                 tasegurando = false;
                 gameObject.tag = "comidacomcliente";
+              
             }
         }
+
     }
+
+       
+
+       
+    
 }

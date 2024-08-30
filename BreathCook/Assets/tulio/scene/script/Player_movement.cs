@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
-   
+    [Header("comida")]
+    
 
     [Header("movimentacao")]
     public float moveSpeed = 5f;
@@ -24,6 +26,7 @@ public class Player_movement : MonoBehaviour
     private bool tacolidindo = false;
     public KeyCode botaointeracao = KeyCode.X;
     public KeyCode botaointeracaosair = KeyCode.Z;
+    private comidafeita comida;
 
     private void Start()
     {
@@ -32,20 +35,23 @@ public class Player_movement : MonoBehaviour
 
 
     // interacao
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("balcaocomida"))
         {
             tacolidindo = true;
         }
-        else
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("balcaocomida"))
         {
             tacolidindo = false;
         }
-       
-     
     }
+
 
 
     private void FixedUpdate()
@@ -71,22 +77,40 @@ public class Player_movement : MonoBehaviour
             sr.flipX = false;
         }
 
-        if (tacolidindo && Input.GetKeyDown(botaointeracao))
+        if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true)
         {
-            interacao.SetActive(true);
+
             Camera.main.transform.position = new Vector3(-18.74f, 0.11f, -10f);
+            // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
+            // Destroy(prefab_comidafeita);
+        }
+        else if (tacolidindo == true && GameObject.FindGameObjectWithTag("comidafeita") == true && Input.GetKey(botaointeracao))
+        {
+          //  comida = GameObject.FindGameObjectWithTag("comidafeita").GetComponent<comidafeita>();
+            Debug.Log("doe a comida");
+           
+        }
+
+        if (Input.GetKey(botaointeracaosair)) 
+        {         
+            Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
+        }
+
+
+    }
+    
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("descarte") &&  Input.GetKey(botaointeracao))
+        {
             GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
             Destroy(prefab_comidafeita);
         }
-
-        if (Input.GetKeyDown(botaointeracaosair)) 
-        {
-            interacao.SetActive(true);
-            Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
-        }
-        
-        
+        // comida.tasegurando == true &&
     }
+
 
 
 
