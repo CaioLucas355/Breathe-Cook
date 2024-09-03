@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
-    [Header("comida")]
-    
+    [Header("transicao")]
+    private float speed = 10.0f;
+    private Vector2 target;
+    private Vector2 position;
+    private Camera cam;
+    public float speedcam = 10.0f;
+    public new Vector2 Target;
 
     [Header("movimentacao")]
     public float moveSpeed = 5f;
@@ -28,9 +33,14 @@ public class Player_movement : MonoBehaviour
     public KeyCode botaointeracaosair = KeyCode.Z;
     private comidafeita comida;
 
+    
+    
+
     private void Start()
     {
         animator = GetComponent<Animator>();
+        target = new Vector2(0.0f, 0.0f);
+        cam = Camera.main;
     }
 
 
@@ -59,6 +69,7 @@ public class Player_movement : MonoBehaviour
         // movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        float step = speedcam * Time.deltaTime;
 
         rb.velocity = new Vector2(moveSpeed * movement.x, moveSpeed * movement.y);
 
@@ -79,8 +90,12 @@ public class Player_movement : MonoBehaviour
 
         if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true)
         {
-
-            Camera.main.transform.position = new Vector3(-18.74f, 0.11f, -10f);
+            
+            
+              Debug.Log("andando");
+              cam.transform.position = Vector2.MoveTowards(transform.position, Target, step);
+            
+            
             // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
             // Destroy(prefab_comidafeita);
         }
@@ -92,8 +107,9 @@ public class Player_movement : MonoBehaviour
         }
 
         if (Input.GetKey(botaointeracaosair)) 
-        {         
-            Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
+        {
+
+            cam.transform.position = Vector2.MoveTowards(transform.position, target2, step);
         }
 
 
