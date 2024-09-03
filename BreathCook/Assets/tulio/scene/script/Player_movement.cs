@@ -11,8 +11,8 @@ public class Player_movement : MonoBehaviour
     private Vector2 position;
     private Camera cam;
     public float speedcam = 10.0f;
-    public new Vector2 Target;
-
+    private Vector2 target2;
+    private Vector2 Target;
     [Header("movimentacao")]
     public float moveSpeed = 5f;
 
