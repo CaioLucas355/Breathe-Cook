@@ -20,7 +20,6 @@ public class Letreiro : MonoBehaviour
 
     private void Awake()
     {
-        _instance = this;
     }
 
 }
