@@ -4,64 +4,109 @@ using UnityEngine;
 
 public class MovmentNPC : MonoBehaviour
 {
+
+
+
+    [Header(" NPC")]
+    public Collider2D NpcBx;
+
+    public bool pedidoFT = false;
+
     
-
-    [Header("Caminho do NPC")]
-    [SerializeField] private Transform[] pontosDoCaixa;
-    [SerializeField] private Transform[] pontosAtendido;
-    [SerializeField] private Transform[] pontosCadeiraA;
-    [SerializeField] private Transform[] pontosCadeiraB;
-    [SerializeField] private Transform[] pontosCadeiraC;
-    [SerializeField] private Transform[] pontosCadeiraD;
-    [SerializeField] private Transform[] pontosCadeiraE;
-    [SerializeField] private Transform[] pontosCadeiraF;
-    [SerializeField] private Transform[] pontosCadeiraG;
-    [SerializeField] private Transform[] pontosCadeiraH;
-    [SerializeField] private Transform[] pontosCadeiraI;
-    [SerializeField] private Transform[] pontosCadeiraJ;
-    [SerializeField] private Transform[] pontosCadeiraK;
-    [SerializeField] private Transform[] pontosCadeiraL;
-
     private int pontoAtual;// QUAL PONTO NÓS ESTAMOS
-
+    private Transform[] npcCadeira;
 
     [Header("Movimento do NPC")]
     [SerializeField] private float velocidadeDoNPC;
 
     private float ultimaPosiçãoX;
-    
-    [Header("Ação do Cliente")]
-    public Transform balcao;
-    bool pedidoEntregue;
-    bool sentado;
 
-   private void Start()
+    //[Header("Ação do Cliente")]
+    //public Transform balcao;
+    //bool pedidoEntregue;
+    //bool sentado;
+
+    private void Start()
     {
         pontoAtual = 0;
-        transform.position = pontosDoCaixa[pontoAtual].position;
+        transform.position = GameManager.Instance.pontosDoCaixa[pontoAtual].position;
     }
 
-    
+
     private void Update()
     {
-        MovimentarNPC();
+        if ( pedidoFT == false)
+        {
+            MovimentarNPC();
+            Debug.Log("pedido não feito");
+        }
+        else
+        {
+            IrParaCadeira();
+        }
+ 
         EspelharHorizontal();
+       
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("balcao"))
+        {
+            Debug.Log("pedido feito");
+            pedidoFT = true;
+            EscolherCadeira();
+        }
+    } //fazendo pedido
+    
+    public void EscolherCadeira()
+    {
+        for (int i = 0; i < GameManager.Instance.cadeirasOcupadas.Length; i++)
+        {
+            if (GameManager.Instance.cadeirasOcupadas[i] == false)
+            {
+                switch (i)
+                {
+                    case 0:
+                        npcCadeira = GameManager.Instance.pontosCadeiraA;
+                        GameManager.Instance.cadeirasOcupadas[i] = true;
+                        pontoAtual = 0;
+                        break;
+                }
+                break; 
+            }
+        }
+    }
+    public void IrParaCadeira()
+    {
+        if (npcCadeira == GameManager.Instance.pontosCadeiraA)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.pontosCadeiraA[pontoAtual].position, velocidadeDoNPC * Time.deltaTime); 
+            if (transform.position == GameManager.Instance.pontosCadeiraA[pontoAtual].position)
+            {
+                if (pontoAtual != GameManager.Instance.pontosCadeiraA.Length - 1)
+                {
+                    pontoAtual++;
+                }
+            }
+            
+     
+        }
     }
     private void MovimentarNPC()
     {
-        transform.position = Vector2.MoveTowards(transform.position, pontosDoCaixa[pontoAtual].position, velocidadeDoNPC * Time.deltaTime); // transform.position = ponto A = minha posição ; pontosDoCaixa[pontoAtual].position = ponto atual onde devo ir
-        if (transform.position == pontosDoCaixa[pontoAtual].position )// se a nossa posição é onde deviamos chegar
+        transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.pontosDoCaixa[pontoAtual].position, velocidadeDoNPC * Time.deltaTime); // transform.position = ponto A = minha posição ; pontosDoCaixa[pontoAtual].position = ponto atual onde devo ir
+        if (transform.position == GameManager.Instance.pontosDoCaixa[pontoAtual].position)// se a nossa posição é onde deviamos chegar
         {
             pontoAtual += 1;// aumentar em 1 e vai pro próximo ponto
 
             ultimaPosiçãoX = transform.localPosition.x;
 
-           //if( pontoAtual >= pontosDoCaixa.Length)// condição quando chega no limite da array
-          // {
-                //pontoAtual = 0;//retornar pro ponto original 
-          // }
+            //if( pontoAtual >= pontosDoCaixa.Length)//   quando chega no limite da array
+            // {
+            //pontoAtual = 0;//retornar pro ponto original 
+            // }
         }
-    
+
     }
 
     private void EspelharHorizontal()
@@ -75,5 +120,6 @@ public class MovmentNPC : MonoBehaviour
             transform.localScale = new Vector3(4f, 5f, 5f);
         }
     }
-  
-}   
+
+
+}
