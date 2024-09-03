@@ -133,92 +133,85 @@ using UnityEngine;
     {
         switch (ingrediente)
         {
-            case 0:
-                //verifica se a camomila ja esta posicionada
-                //se tiver ele completa a receita cha de camomila
-                //senao ele coloca a agua como verdadeiro para sinalizar que esta na posicao para fazer a receita
-                if (combinacao[1] == true)
+           
+
+
+            case 8:
+                if (combinacao[6] == true && combinacao[7] == true)
                 {
-                    FinalizarCombinacao(0);
-                }
-                else if (combinacao[2] == true)
-                {
-                    FinalizarCombinacao(1);
-                }
-                else if (combinacao[5] == true)
-                {
-                    FinalizarCombinacao(3);
+                    FinalizarCombinacao(4);
                 }
                 else
                 {
-                    combinacao[0] = true;
+                    combinacao[8] = true;
                 }
-                break;
+            break;
 
 
-            case 1:
-                if (combinacao[0] == true)
+
+
+            case 6:
+
+                if (combinacao[8] == true && combinacao[7] == true)
                 {
-                    FinalizarCombinacao(0);
-                }
-                else
-                {
-                    combinacao[1] = true;
-                }
-                break;
-
-
-
-
-            case 2:
-
-                if (combinacao[3] == true && combinacao[4] == true)
-                {
-                    FinalizarCombinacao(2);
+                    FinalizarCombinacao(4);
                 }
                 else
                 {
-                    combinacao[2] = true;
+                    combinacao[6] = true;
                 }
 
                 break;
 
 
-            case 3:
+            case 7:
 
-                if (combinacao[2] == true && combinacao[4] == true)
+                if (combinacao[6] == true && combinacao[8] == true)
                 {
-                    FinalizarCombinacao(2);
+                    FinalizarCombinacao(4);
                 }
                 else
                 {
-                    combinacao[3] = true;
+                    combinacao[7] = true;
                 }
 
                 break;
 
 
-            case 4:
+            case 9:
 
-                if (combinacao[2] == true && combinacao[3] == true)
+                if (combinacao[10] == true && combinacao[11] == true)
                 {
-                    FinalizarCombinacao(2);
+                    FinalizarCombinacao(5);
                 }
                 else
                 {
-                    combinacao[4] = true;
+                    combinacao[9] = true;
                 }
 
                 break;
-            case 5:
+            case 10:
 
-                if (combinacao[0] == true)
+                if (combinacao[9] == true && combinacao[11] == true)
                 {
-                    FinalizarCombinacao(3);
+                    FinalizarCombinacao(5);
                 }
                 else
                 {
-                    combinacao[5] = true;
+                    combinacao[10] = true;
+                }
+
+                break;
+
+            case 11:
+
+                if (combinacao[9] == true && combinacao[10] == true)
+                {
+                    FinalizarCombinacao(5);
+                }
+                else
+                {
+                    combinacao[11] = true;
                 }
 
                 break;
@@ -232,94 +225,27 @@ using UnityEngine;
     {
         switch (ingrediente)
         {
-            case 0:
-                //verifica se a camomila ja esta posicionada
-                //se tiver ele completa a receita cha de camomila
-                //senao ele coloca a agua como verdadeiro para sinalizar que esta na posicao para fazer a receita
-                if (combinacao[1] == true)
+            case 13:
+                if (combinacao[12] == true)
                 {
-                    FinalizarCombinacao(0);
-                }
-                else if (combinacao[2] == true)
-                {
-                    FinalizarCombinacao(1);
-                }
-                else if (combinacao[5] == true)
-                {
-                    FinalizarCombinacao(3);
+                    FinalizarCombinacao(6);
                 }
                 else
                 {
-                    combinacao[0] = true;
+                    combinacao[13] = true;
                 }
                 break;
 
 
-            case 1:
-                if (combinacao[0] == true)
+            case 12:
+                if (combinacao[13] == true)
                 {
-                    FinalizarCombinacao(0);
+                    FinalizarCombinacao(6);
                 }
                 else
                 {
-                    combinacao[1] = true;
+                    combinacao[12] = true;
                 }
-                break;
-
-
-
-
-            case 2:
-
-                if (combinacao[3] == true && combinacao[4] == true)
-                {
-                    FinalizarCombinacao(2);
-                }
-                else
-                {
-                    combinacao[2] = true;
-                }
-
-                break;
-
-
-            case 3:
-
-                if (combinacao[2] == true && combinacao[4] == true)
-                {
-                    FinalizarCombinacao(2);
-                }
-                else
-                {
-                    combinacao[3] = true;
-                }
-
-                break;
-
-
-            case 4:
-
-                if (combinacao[2] == true && combinacao[3] == true)
-                {
-                    FinalizarCombinacao(2);
-                }
-                else
-                {
-                    combinacao[4] = true;
-                }
-
-                break;
-            case 5:
-
-                if (combinacao[0] == true)
-                {
-                    FinalizarCombinacao(3);
-                }
-                else
-                {
-                    combinacao[5] = true;
-                }
-
                 break;
 
         }

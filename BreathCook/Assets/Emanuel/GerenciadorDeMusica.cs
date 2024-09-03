@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditorInternal;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class GerenciadordeMusica : MonoBehaviour
             return _instance;
         }
     }
+    [Header("GERENCIADOR DE MUSICA")]
     private AudioSource _audiosource;
     public AudioClip[] songs;
     public float volume;
@@ -20,15 +22,22 @@ public class GerenciadordeMusica : MonoBehaviour
     private float _songsPlayed;
     private bool[] _beenPlayed;
 
+    [Header("LETREIRO")]
+    float speed = 10f;
+    float textPosBegin = -1366.65f;
+    float boundaryTextEnd = 1366.65f;
+
+    public RectTransform myGorectTransform;
+
+    [SerializeField]
+    TextMeshProUGUI mainText;
+
+    [SerializeField]
+    bool isLooping = false;
+
     private void Awake()
     {
-        if (_instance == null)
-        {
-            _instance = this;
-            DontDestroyOnLoad(_instance);
-        }
-        else
-            Destroy(gameObject);
+        _instance = this;
     }
 
 
@@ -41,6 +50,9 @@ public class GerenciadordeMusica : MonoBehaviour
 
         if (!_audiosource.isPlaying)
             ChangeSongRandom(Random.Range(0, songs.Length));
+
+        StartCoroutine(AutoScrollText());
+
     }
 
     // Update is called once per frame
@@ -67,6 +79,7 @@ public class GerenciadordeMusica : MonoBehaviour
             _beenPlayed[songPicked] = true;
             _audiosource.clip = songs[songPicked];
             _audiosource.Play();
+            mainText.text = _audiosource.clip.name;
         }
         else
             _audiosource.Stop();
@@ -78,6 +91,7 @@ public class GerenciadordeMusica : MonoBehaviour
         _beenPlayed[songPicked] = true;
         _audiosource.clip = songs[songPicked];
         _audiosource.Play();
+        mainText.text = _audiosource.clip.name;
     }
 
     private void Reset()
@@ -94,4 +108,26 @@ public class GerenciadordeMusica : MonoBehaviour
             }
         }
     }
+
+
+    IEnumerator AutoScrollText()
+    {
+        while (myGorectTransform.localPosition.x < boundaryTextEnd)
+        {
+            myGorectTransform.Translate(Vector3.right * speed * Time.deltaTime);
+            if (myGorectTransform.localPosition.x > boundaryTextEnd)
+            {
+                if (isLooping)
+                {
+                    myGorectTransform.localPosition = new Vector3(textPosBegin, myGorectTransform.localPosition.y, myGorectTransform.localPosition.z);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            yield return null;
+        }
+    }
+
 }

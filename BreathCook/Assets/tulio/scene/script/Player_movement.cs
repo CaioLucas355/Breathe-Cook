@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
-   
+    [Header("transicao")]
+    private float speed = 10.0f;
+    private Vector2 target;
+    private Vector2 position;
+    private Camera cam;
+    public float speedcam = 10.0f;
+    public new Vector2 Target;
 
     [Header("movimentacao")]
     public float moveSpeed = 5f;
@@ -24,28 +31,37 @@ public class Player_movement : MonoBehaviour
     private bool tacolidindo = false;
     public KeyCode botaointeracao = KeyCode.X;
     public KeyCode botaointeracaosair = KeyCode.Z;
+    private comidafeita comida;
+
+    
+    
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        target = new Vector2(0.0f, 0.0f);
+        cam = Camera.main;
     }
 
 
     // interacao
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("balcaocomida"))
         {
             tacolidindo = true;
         }
-        else
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("balcaocomida"))
         {
             tacolidindo = false;
         }
-       
-     
     }
+
 
 
     private void FixedUpdate()
@@ -53,6 +69,7 @@ public class Player_movement : MonoBehaviour
         // movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+        float step = speedcam * Time.deltaTime;
 
         rb.velocity = new Vector2(moveSpeed * movement.x, moveSpeed * movement.y);
 
@@ -71,22 +88,45 @@ public class Player_movement : MonoBehaviour
             sr.flipX = false;
         }
 
-        if (tacolidindo && Input.GetKeyDown(botaointeracao))
+        if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true)
         {
-            interacao.SetActive(true);
-            Camera.main.transform.position = new Vector3(-18.74f, 0.11f, -10f);
+            
+            
+              Debug.Log("andando");
+              cam.transform.position = Vector2.MoveTowards(transform.position, Target, step);
+            
+            
+            // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
+            // Destroy(prefab_comidafeita);
+        }
+        else if (tacolidindo == true && GameObject.FindGameObjectWithTag("comidafeita") == true && Input.GetKey(botaointeracao))
+        {
+          //  comida = GameObject.FindGameObjectWithTag("comidafeita").GetComponent<comidafeita>();
+            Debug.Log("doe a comida");
+           
+        }
+
+        if (Input.GetKey(botaointeracaosair)) 
+        {
+
+            cam.transform.position = Vector2.MoveTowards(transform.position, target2, step);
+        }
+
+
+    }
+    
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("descarte") &&  Input.GetKey(botaointeracao))
+        {
             GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
             Destroy(prefab_comidafeita);
         }
-
-        if (Input.GetKeyDown(botaointeracaosair)) 
-        {
-            interacao.SetActive(true);
-            Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
-        }
-        
-        
+        // comida.tasegurando == true &&
     }
+
 
 
 
