@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class interacaocozinha : MonoBehaviour
 {
+    
     public string destinationtag = "dd";
     Vector3 offset;
     Collider2D collider2D;
@@ -15,6 +16,8 @@ public class interacaocozinha : MonoBehaviour
     //determinar qual é o ingrediente - agua, camomila, etc
     public int tipoIngrediente;
     public GameObject comidacolocada;
+
+    TrailRenderer tril;
 
     public Vector3 posicaoinicial;
     void Awake()
@@ -27,6 +30,7 @@ public class interacaocozinha : MonoBehaviour
     {
         posicaoinicial = transform.position;
         foi = false;
+        tril = GetComponent<TrailRenderer>();
     }
 
     void OnMouseDown()
@@ -38,16 +42,19 @@ public class interacaocozinha : MonoBehaviour
     {
         transform.position = MouseWorldPosition() + offset;
         draging = true;
+        tril.enabled = true;
+        
     }
 
     void OnMouseUp()
     {
         draging = false;
+        tril.enabled = false;
 
-        if (foi == false) 
-        {
-            transform.position = posicaoinicial;
-        }
+       // if (foi == false) 
+     //   {
+        //    transform.position = posicaoinicial;
+      //  }
         
         /*  var rayDrigin = Camera.main.transform.position;
           var rayDirection = MouseWorldPosition() - Camera.main.transform.position;
@@ -115,6 +122,7 @@ public class interacaocozinha : MonoBehaviour
             foi = true;
             collider2D.enabled = true;
             transform.position = collision.transform.position;
+            Destroy(gameObject);
             switch (destinationtag)
             {
 

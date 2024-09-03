@@ -226,9 +226,13 @@ using UnityEngine;
         switch (ingrediente)
         {
             case 13:
-                if (combinacao[12] == true)
+                if (combinacao[12] == true && combinacao[14])
                 {
                     FinalizarCombinacao(6);
+                }
+                else if (combinacao[12] == true && combinacao[15])
+                {
+                    FinalizarCombinacao(7);
                 }
                 else
                 {
@@ -238,13 +242,39 @@ using UnityEngine;
 
 
             case 12:
-                if (combinacao[13] == true)
+                if (combinacao[13] == true && combinacao[14])
+                {
+                    FinalizarCombinacao(6);
+                }
+                else if (combinacao[13] == true && combinacao[15]) 
+                {
+                    FinalizarCombinacao(7);
+                }
+                else
+                {
+                    combinacao[12] = true;
+                }
+                break;
+
+            case 14:
+                if (combinacao[13] == true && combinacao[12] == true)
                 {
                     FinalizarCombinacao(6);
                 }
                 else
                 {
-                    combinacao[12] = true;
+                    combinacao[14] = true;
+                }
+                break;
+
+            case 15:
+                if (combinacao[13] == true && combinacao[12])
+                {
+                    FinalizarCombinacao(7);
+                }
+                else
+                {
+                    combinacao[15] = true;
                 }
                 break;
 
