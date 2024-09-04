@@ -6,7 +6,7 @@ using UnityEngine;
 public class Player_movement : MonoBehaviour
 {
     [Header("transicao")]
-    
+    public static Player_movement instamce;
 
 
     
@@ -37,9 +37,12 @@ public class Player_movement : MonoBehaviour
     public KeyCode botaointeracaosair = KeyCode.Z;
     private comidafeita comida;
     bool moveFogao, moveCozinha;
-    bool movevolta, moveZ;
+    public bool movevolta, moveZ;
 
-
+    private void Awake()
+    {
+        instamce = this;
+    }
 
     private void Start()
     {
@@ -142,12 +145,18 @@ public class Player_movement : MonoBehaviour
           movevolta = false;
         }
 
-        if (podemovernao == true)
+        if (podemovernao == true && cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
         {
-            if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) { 
+            
             moveSpeed = 5;
             podemovernao = false;
-            }
+            
+        }
+        if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) 
+        {
+            moveSpeed = 5;
+            podemovernao |= false;
+        
         }
     }
 

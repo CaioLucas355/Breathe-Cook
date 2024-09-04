@@ -122,23 +122,26 @@ public class interacaocozinha : MonoBehaviour
             foi = true;
             collider2D.enabled = true;
             transform.position = collision.transform.position;
-            Destroy(gameObject);
+            
             switch (destinationtag)
             {
 
                 case "bebida":
                     //verificar no script da receita
                     receita.instance.fazerbebida(tipoIngrediente);
+                    transform.position = new Vector3(0,999999999999999999,0);
                     break;
 
                 case "entrada":
                     //verificar no script da receita
                     receita.instance.fazerentrada(tipoIngrediente);
+                    transform.position = new Vector3(0, 999999999999999999, 0);
                     break;
 
                 case "sobremesa":
                     //verificar no script da receita
                     receita.instance.fazersobremesa(tipoIngrediente);
+                    transform.position = new Vector3(0, 999999999999999999, 0);
                     break;
             }
         }

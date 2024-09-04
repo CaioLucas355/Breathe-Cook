@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 1570262562, guid: e91bbdc0ed42beb4aae5c680b0a46921, type: 3}
+  m_Sprite: {fileID: 874072593, guid: eaafd163549a3fd49a4ea3e0daaaeda6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,3 +164,4 @@ MonoBehaviour:
   destinationtag: bebida
   tipoIngrediente: 1
   comidacolocada: {fileID: 562435044363878057}
+  posicaoinicial: {x: 0, y: 0, z: 0}
