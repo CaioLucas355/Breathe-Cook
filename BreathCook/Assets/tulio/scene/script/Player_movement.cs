@@ -6,9 +6,10 @@ using UnityEngine;
 public class Player_movement : MonoBehaviour
 {
     [Header("transicao")]
-    
+    public static Player_movement instamce;
 
-
+    [Header("receitas")]
+    [SerializeField] private GameObject receitas;
     
     private Vector2 target;
     private Vector2 position;
@@ -37,12 +38,16 @@ public class Player_movement : MonoBehaviour
     public KeyCode botaointeracaosair = KeyCode.Z;
     private comidafeita comida;
     bool moveFogao, moveCozinha;
-    bool movevolta, moveZ;
+    public bool movevolta, moveZ;
 
-
+    private void Awake()
+    {
+        instamce = this;
+    }
 
     private void Start()
     {
+        receitas.SetActive(false);
         animator = GetComponent<Animator>();
         target2 = new Vector3(0.037f, 0.11f, -11f);
         target = new Vector3(-17.966f, 0.11f, -11f);
@@ -97,9 +102,10 @@ public class Player_movement : MonoBehaviour
         if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true)
         {
 
-
+           
             Debug.Log("andando");
             moveFogao = true;
+            
 
 
             // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
@@ -117,6 +123,7 @@ public class Player_movement : MonoBehaviour
             {
                 moveSpeed = 0;
                 cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target.x, target.y, -11), step);
+                
                 movevolta = false;
             }
             else
@@ -127,6 +134,7 @@ public class Player_movement : MonoBehaviour
 
         if (Input.GetKey(botaointeracaosair))
         {
+            
             Debug.Log("voltando");
             movevolta = true;
             
@@ -136,19 +144,38 @@ public class Player_movement : MonoBehaviour
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target2.x,target2.y,-11), step);
             moveFogao = false;
             podemovernao = true;
+            
         }
         else 
         {
-          movevolta = false;
+           
+            movevolta = false;
         }
 
-        if (podemovernao == true)
+        if (podemovernao == true && cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
         {
-            if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) { 
+            
             moveSpeed = 5;
             podemovernao = false;
-            }
+            
         }
+        if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) 
+        {
+            moveSpeed = 5;
+            podemovernao |= false;
+        
+        }
+        if (cam.transform.position == new Vector3(-17.966f, 0.11f, -11f))
+        {
+            receitas.SetActive(true);
+
+
+        }
+        else if (cam.transform.position != new Vector3(-17.966f, 0.11f, -11f))
+        {
+            receitas.SetActive(false);
+        }
+
     }
 
 

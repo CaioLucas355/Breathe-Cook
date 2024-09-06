@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eaafd163549a3fd49a4ea3e0daaaeda6
+guid: a734a4202261ac845be080d380476e6f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,7 +149,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cozinhacomidas_0
+      name: comidass_0
       rect:
         serializedVersion: 2
         x: 87
@@ -157,20 +157,20 @@ TextureImporter:
         width: 15
         height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a10a7ef87539f424eba86cb7d950f705
-      internalID: 70583662
+      spriteID: d711a95ba07559d418db32463449dc92
+      internalID: 780989309
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_1
+      name: comidass_1
       rect:
         serializedVersion: 2
         x: 141
@@ -178,20 +178,20 @@ TextureImporter:
         width: 22
         height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caaba22f20379094eb627919dca086f7
-      internalID: 244032245
+      spriteID: a5a949273a1806049b433c987a713fb4
+      internalID: -111654957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_2
+      name: comidass_2
       rect:
         serializedVersion: 2
         x: 166
@@ -199,20 +199,20 @@ TextureImporter:
         width: 27
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6a8b54db2babe54196982b583662d1d
-      internalID: 663295696
+      spriteID: c099ce1bfe19c0c45a86e7f84c37b227
+      internalID: -1609790322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_3
+      name: comidass_3
       rect:
         serializedVersion: 2
         x: 81
@@ -220,20 +220,20 @@ TextureImporter:
         width: 21
         height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd6f8202ed387d346a50191ea62a7766
-      internalID: 229684393
+      spriteID: f9f97b0df8098194eb86c1089ad11e99
+      internalID: -1776164861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_4
+      name: comidass_4
       rect:
         serializedVersion: 2
         x: 104
@@ -241,20 +241,20 @@ TextureImporter:
         width: 13
         height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59c6d111483998649b7a5f4fc19e5c6f
-      internalID: 3939732
+      spriteID: c9d9f891f629201409fe1215968fb2be
+      internalID: 1954205602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_5
+      name: comidass_5
       rect:
         serializedVersion: 2
         x: 119
@@ -262,20 +262,20 @@ TextureImporter:
         width: 15
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93c6d3a19f99dee4f8f271de877117b8
-      internalID: 1038425599
+      spriteID: f1e04f122c331ed4b90d0ba75c85d271
+      internalID: -802191349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_6
+      name: comidass_6
       rect:
         serializedVersion: 2
         x: 147
@@ -283,41 +283,41 @@ TextureImporter:
         width: 15
         height: 17
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a20aaa81627e25a48af76f8ffdea63e1
-      internalID: 1554091571
+      spriteID: 301a5be5dfe01e54d8d84d463e8b9dae
+      internalID: -1362100240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_7
+      name: comidass_7
       rect:
         serializedVersion: 2
         x: 164
         y: 62
         width: 13
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 2.5537531, y: 3.5883138}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21510dafb3a969e49949d4b955cca03a
-      internalID: 2006296289
+      spriteID: 393918cfd1a5e9f479e4eaf5aceca1f2
+      internalID: 1097451451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_8
+      name: comidass_8
       rect:
         serializedVersion: 2
         x: 179
@@ -325,20 +325,20 @@ TextureImporter:
         width: 17
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4fc1cdfa0335a854ebc29cf6cb92029a
-      internalID: -1768702194
+      spriteID: d44c2c5f56970d940b210b2536966258
+      internalID: -338939041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_9
+      name: comidass_9
       rect:
         serializedVersion: 2
         x: 4
@@ -346,20 +346,20 @@ TextureImporter:
         width: 17
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60c0ad49cd3e6c84d927fde1a13d5ccb
-      internalID: 874072593
+      spriteID: 50eee08582f3bd842a68ae5719605c3c
+      internalID: -1878235494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_10
+      name: comidass_10
       rect:
         serializedVersion: 2
         x: 23
@@ -367,20 +367,20 @@ TextureImporter:
         width: 16
         height: 37
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43e7f8845fbc3b547a282caceb7c72b2
-      internalID: -1889412532
+      spriteID: 09e1287827c24f24ba1b4efee7590b6a
+      internalID: -891975901
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cozinhacomidas_11
+      name: comidass_11
       rect:
         serializedVersion: 2
         x: 42
@@ -388,14 +388,14 @@ TextureImporter:
         width: 24
         height: 30
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee7da0cf13dbd6479fefb3f6528ba4b
-      internalID: -1746764512
+      spriteID: 2c6f98b435f039a4bba65f0564b8ef98
+      internalID: 1762826544
       vertices: []
       indices: 
       edges: []
@@ -411,18 +411,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cozinhacomidas_0: 70583662
-      Cozinhacomidas_1: 244032245
-      Cozinhacomidas_10: -1889412532
-      Cozinhacomidas_11: -1746764512
-      Cozinhacomidas_2: 663295696
-      Cozinhacomidas_3: 229684393
-      Cozinhacomidas_4: 3939732
-      Cozinhacomidas_5: 1038425599
-      Cozinhacomidas_6: 1554091571
-      Cozinhacomidas_7: 2006296289
-      Cozinhacomidas_8: -1768702194
-      Cozinhacomidas_9: 874072593
+      comidass_0: 780989309
+      comidass_1: -111654957
+      comidass_10: -891975901
+      comidass_11: 1762826544
+      comidass_2: -1609790322
+      comidass_3: -1776164861
+      comidass_4: 1954205602
+      comidass_5: -802191349
+      comidass_6: -1362100240
+      comidass_7: 1097451451
+      comidass_8: -338939041
+      comidass_9: -1878235494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

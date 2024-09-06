@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
- public class receita : MonoBehaviour
+public class receita : MonoBehaviour
 {
     public static receita instance;
     [Header("botao para mandar comida")]
@@ -31,7 +33,7 @@ using UnityEngine;
 
     }
     public void fazerbebida(int ingrediente)
-     {
+    {
         switch (ingrediente)
         {
             case 0:
@@ -126,14 +128,14 @@ using UnityEngine;
 
         }
 
-        
-     }
+
+    }
 
     public void fazerentrada(int ingrediente)
     {
         switch (ingrediente)
         {
-           
+
 
 
             case 8:
@@ -145,7 +147,7 @@ using UnityEngine;
                 {
                     combinacao[8] = true;
                 }
-            break;
+                break;
 
 
 
@@ -180,7 +182,7 @@ using UnityEngine;
 
             case 9:
 
-                if (combinacao[10] == true && combinacao[11] == true)
+                if (combinacao[10] == true )
                 {
                     FinalizarCombinacao(5);
                 }
@@ -192,7 +194,7 @@ using UnityEngine;
                 break;
             case 10:
 
-                if (combinacao[9] == true && combinacao[11] == true)
+                if (combinacao[9] == true )
                 {
                     FinalizarCombinacao(5);
                 }
@@ -203,18 +205,7 @@ using UnityEngine;
 
                 break;
 
-            case 11:
-
-                if (combinacao[9] == true && combinacao[10] == true)
-                {
-                    FinalizarCombinacao(5);
-                }
-                else
-                {
-                    combinacao[11] = true;
-                }
-
-                break;
+            
 
         }
 
@@ -246,7 +237,7 @@ using UnityEngine;
                 {
                     FinalizarCombinacao(6);
                 }
-                else if (combinacao[13] == true && combinacao[15]) 
+                else if (combinacao[13] == true && combinacao[15])
                 {
                     FinalizarCombinacao(7);
                 }
@@ -287,16 +278,25 @@ using UnityEngine;
     {
 
         Instantiate(comida[comb], prato.transform.position, Quaternion.identity);
-        Camera.main.transform.position = new Vector3(0.037f, 0.11f, -11f);
-
-        for (int i = 0; i < ingrediente.Length; i++)
-        {
-            ingrediente[i].gameObject.transform.position = ingrediente[i].posicaoinicial;
-        }
+        Player_movement.instamce.movevolta = true;
+        StartCoroutine(esperar());
         for (int i = 0; i < combinacao.Length; i++)
         {
             combinacao[i] = false;
         }
     }
     //fazer o reset dos ingredientes e spanar o objeto na parte do restaurante
+
+    IEnumerator esperar()
+    {
+        yield return new WaitForSeconds(3f);
+        for (int i = 0; i < ingrediente.Length; i++)
+        {
+            ingrediente[i].gameObject.transform.position = ingrediente[i].posicaoinicial;
+        }
+
+    }
+
+
+
 }

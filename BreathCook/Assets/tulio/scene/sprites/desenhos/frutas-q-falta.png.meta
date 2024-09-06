@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 94f5e3118d8a52c478516d1c69053893
+guid: 06aac973d1a53064099aba93d0c5f686
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cozinhaquadro_0
+      name: frutas-q-falta_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 67
-        width: 35
-        height: 43
+        x: 102
+        y: 95
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,8 +163,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6d46406ee66a0e4498702334c46864b
-      internalID: -1762010851
+      spriteID: ccd451a3266aa9c44802aeb6d6cfc052
+      internalID: 2119666263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frutas-q-falta_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 95
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c569abd85256cf6408fed21d92f130e9
+      internalID: 1151678168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frutas-q-falta_2
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 62
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81aba0e146d09d14d9639cc9337fd9a5
+      internalID: -2065867058
       vertices: []
       indices: 
       edges: []
@@ -180,7 +222,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cozinhaquadro_0: -1762010851
+      frutas-q-falta_0: 2119666263
+      frutas-q-falta_1: 1151678168
+      frutas-q-falta_2: -2065867058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

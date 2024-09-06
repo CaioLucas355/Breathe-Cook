@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 public class MovmentNPC : MonoBehaviour
-{
+{//
 
-
+    
 
     [Header(" NPC")]
     public Collider2D NpcBx;
+    
 
     public bool pedidoFT = false;
 
@@ -92,9 +94,10 @@ public class MovmentNPC : MonoBehaviour
      
         }
     }
-    private void MovimentarNPC()
+    public void MovimentarNPC()
     {
-        transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.pontosDoCaixa[pontoAtual].position, velocidadeDoNPC * Time.deltaTime); // transform.position = ponto A = minha posição ; pontosDoCaixa[pontoAtual].position = ponto atual onde devo ir
+        float step = velocidadeDoNPC * Time.deltaTime;
+        transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.pontosDoCaixa[pontoAtual].position, step); // transform.position = ponto A = minha posição ; pontosDoCaixa[pontoAtual].position = ponto atual onde devo ir
         if (transform.position == GameManager.Instance.pontosDoCaixa[pontoAtual].position)// se a nossa posição é onde deviamos chegar
         {
             pontoAtual += 1;// aumentar em 1 e vai pro próximo ponto
