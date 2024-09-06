@@ -17,10 +17,6 @@ public class GameManager : MonoBehaviour
     public Transform[] pontosCadeiraF;
     public Transform[] pontosCadeiraG;
     public Transform[] pontosCadeiraH;
-    public Transform[] pontosCadeiraI;
-    public Transform[] pontosCadeiraJ;
-    public Transform[] pontosCadeiraK;
-    public Transform[] pontosCadeiraL;
     private void Awake()
     {
         Instance = this;
@@ -29,12 +25,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
