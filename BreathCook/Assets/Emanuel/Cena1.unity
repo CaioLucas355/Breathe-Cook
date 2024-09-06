@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3dd46ab26db095e47b05149803132e1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 408f47b711a3df94abaf633b6ac3f432, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 1622510404}
   - component: {fileID: 1622510403}
   - component: {fileID: 1622510402}
+  - component: {fileID: 1622510405}
   m_Layer: 5
   m_Name: PanelIn
   m_TagString: Untagged
@@ -752,7 +753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3dd46ab26db095e47b05149803132e1e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 408f47b711a3df94abaf633b6ac3f432, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -770,6 +771,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622510400}
   m_CullTransparentMesh: 1
+--- !u!114 &1622510405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622510400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21335b3bffc0a34d8cf57b0f66c5108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0.2532153, a: 1}
+  - {r: 1, g: 0.5994987, b: 0.15566039, a: 1}
+  - {r: 0, g: 0.6183789, b: 1, a: 1}
+  intensity: 1
+  threshold: 1
 --- !u!1 &2006794102
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +802,7 @@ GameObject:
   - component: {fileID: 2006794104}
   - component: {fileID: 2006794103}
   - component: {fileID: 2006794106}
+  - component: {fileID: 2006794107}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -907,6 +928,25 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &2006794107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006794102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c21335b3bffc0a34d8cf57b0f66c5108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 0.745283, g: 0, b: 0, a: 1}
+  - {r: 0.254717, g: 0.094918124, b: 0.094918124, a: 1}
+  - {r: 0.38776112, g: 0.5471698, b: 0.17808829, a: 1}
+  - {r: 0.083704166, g: 0.4372421, b: 0.5377358, a: 1}
+  intensity: 1
+  threshold: 0.15
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
