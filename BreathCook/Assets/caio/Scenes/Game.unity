@@ -1126,6 +1126,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &393212197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393212198}
+  m_Layer: 0
+  m_Name: pONTO
+  m_TagString: Untagged
+  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393212198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393212197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.159, y: -0.626, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2076977921}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &395688281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4924,6 +4955,40 @@ MonoBehaviour:
   - {fileID: 2040646872}
   - {fileID: 629643755}
   - {fileID: 69778202}
+  iremboraA:
+  - {fileID: 2052989215}
+  - {fileID: 1508408795}
+  - {fileID: 969088205}
+  iremboraB:
+  - {fileID: 351648932}
+  - {fileID: 1083428236}
+  - {fileID: 969088205}
+  iremboraC:
+  - {fileID: 361251978}
+  - {fileID: 1083428236}
+  - {fileID: 969088205}
+  iremboraD:
+  - {fileID: 996347594}
+  - {fileID: 1497515905}
+  - {fileID: 969088205}
+  iremboraE:
+  - {fileID: 2052227818}
+  - {fileID: 1497515905}
+  - {fileID: 969088205}
+  iremboraF:
+  - {fileID: 1720516110}
+  - {fileID: 229700462}
+  - {fileID: 969088205}
+  iremboraG:
+  - {fileID: 788543669}
+  - {fileID: 2040646872}
+  - {fileID: 393212198}
+  - {fileID: 969088205}
+  iremboraH:
+  - {fileID: 69778202}
+  - {fileID: 629643755}
+  - {fileID: 393212198}
+  - {fileID: 969088205}
 --- !u!4 &1644374342
 Transform:
   m_ObjectHideFlags: 0
@@ -6032,6 +6097,7 @@ Transform:
   - {fileID: 229700462}
   - {fileID: 2040646872}
   - {fileID: 629643755}
+  - {fileID: 393212198}
   m_Father: {fileID: 494761347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2094823464

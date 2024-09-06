@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public bool[] cadeirasOcupadas;
-
+    [Header("ir para as Cadeiras")]
     public Transform[] pontosDoCaixa;
     public Transform[] pontosCadeiraA;
     public Transform[] pontosCadeiraB;
@@ -17,6 +17,19 @@ public class GameManager : MonoBehaviour
     public Transform[] pontosCadeiraF;
     public Transform[] pontosCadeiraG;
     public Transform[] pontosCadeiraH;
+
+    [Header("ir para casa")]
+    public Transform[] iremboraA;
+    public Transform[] iremboraB;
+    public Transform[] iremboraC;
+    public Transform[] iremboraD;
+    public Transform[] iremboraE;
+    public Transform[] iremboraF;
+    public Transform[] iremboraG;
+    public Transform[] iremboraH;
+   
+
+
     private void Awake()
     {
         Instance = this;
