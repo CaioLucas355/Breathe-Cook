@@ -1035,11 +1035,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songs:
-  - {fileID: 8300000, guid: 3b6f7a20db65cd3468fc1f9821d030f0, type: 3}
-  - {fileID: 8300000, guid: 8f90305c9f3b6cf4290454f008af919e, type: 3}
-  - {fileID: 8300000, guid: f71ef236441d3df47af12a90e4490a00, type: 3}
-  - {fileID: 8300000, guid: e3fbfa221b8d97f469aff08b7b600474, type: 3}
-  - {fileID: 8300000, guid: 26824eee6b68b7a448412f1a5f48d4d4, type: 3}
+  - {fileID: 8300000, guid: e3e9f73321f0229449063d56503090ce, type: 3}
+  - {fileID: 8300000, guid: 75dc86176beda0c458ac1c418bfc3e15, type: 3}
+  - {fileID: 8300000, guid: b5a0374ae5d192147b2e6500f19d62a9, type: 3}
+  - {fileID: 8300000, guid: a3890aba50dfe92429e76217f7662f21, type: 3}
+  - {fileID: 8300000, guid: d87edfcd04cca7a4383502c4b01cbeaf, type: 3}
   volume: 1
   myGorectTransform: {fileID: 1717304162}
   mainText: {fileID: 1717304164}
