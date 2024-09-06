@@ -182,7 +182,7 @@ public class receita : MonoBehaviour
 
             case 9:
 
-                if (combinacao[10] == true && combinacao[11] == true)
+                if (combinacao[10] == true )
                 {
                     FinalizarCombinacao(5);
                 }
@@ -194,7 +194,7 @@ public class receita : MonoBehaviour
                 break;
             case 10:
 
-                if (combinacao[9] == true && combinacao[11] == true)
+                if (combinacao[9] == true )
                 {
                     FinalizarCombinacao(5);
                 }
@@ -205,18 +205,7 @@ public class receita : MonoBehaviour
 
                 break;
 
-            case 11:
-
-                if (combinacao[9] == true && combinacao[10] == true)
-                {
-                    FinalizarCombinacao(5);
-                }
-                else
-                {
-                    combinacao[11] = true;
-                }
-
-                break;
+            
 
         }
 
@@ -300,7 +289,7 @@ public class receita : MonoBehaviour
 
     IEnumerator esperar()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(3f);
         for (int i = 0; i < ingrediente.Length; i++)
         {
             ingrediente[i].gameObject.transform.position = ingrediente[i].posicaoinicial;
