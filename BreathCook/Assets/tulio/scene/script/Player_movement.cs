@@ -1,16 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
     [Header("transicao")]
     public static Player_movement instamce;
-
-    [Header("receitas")]
-    [SerializeField] private GameObject receitas;
+    public GameObject receitaabrir;
     
+
+
+    [Header("radio")]
+    [SerializeField] private GameObject radio;
+
+
+    public bool segura = false;
     private Vector2 target;
     private Vector2 position;
     private Camera cam;
@@ -36,10 +42,11 @@ public class Player_movement : MonoBehaviour
     private bool tacolidindo = false;
     public KeyCode botaointeracao = KeyCode.X;
     public KeyCode botaointeracaosair = KeyCode.Z;
+    public KeyCode botaodepause = KeyCode.Escape;
     private comidafeita comida;
     bool moveFogao, moveCozinha;
     public bool movevolta, moveZ;
-
+    public GameObject comidaAtual;
     private void Awake()
     {
         instamce = this;
@@ -47,7 +54,6 @@ public class Player_movement : MonoBehaviour
 
     private void Start()
     {
-        receitas.SetActive(false);
         animator = GetComponent<Animator>();
         target2 = new Vector3(0.037f, 0.11f, -11f);
         target = new Vector3(-17.966f, 0.11f, -11f);
@@ -70,6 +76,11 @@ public class Player_movement : MonoBehaviour
         if (collision.gameObject.CompareTag("balcaocomida"))
         {
             tacolidindo = false;
+        }
+        if (collision.gameObject.CompareTag("radio"))
+        {
+            radio.SetActive(false);
+
         }
     }
 
@@ -99,24 +110,26 @@ public class Player_movement : MonoBehaviour
             sr.flipX = false;
         }
 
-        if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true)
+        if (tacolidindo && Input.GetKey(botaointeracao) && GameObject.FindGameObjectWithTag("comidafeita") != true && segura == false)
         {
 
-           
+
             Debug.Log("andando");
             moveFogao = true;
             
+            receitaabrir.SetActive(true);
 
 
             // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
             // Destroy(prefab_comidafeita);
         }
-        else if (tacolidindo == true && GameObject.FindGameObjectWithTag("comidafeita") == true && Input.GetKey(botaointeracao))
+        else if (tacolidindo == true && GameObject.FindGameObjectWithTag("comidafeita") == true && segura == false && Input.GetKey(botaointeracao))
         {
             //  comida = GameObject.FindGameObjectWithTag("comidafeita").GetComponent<comidafeita>();
             Debug.Log("doe a comida");
 
         }
+        
         if (moveFogao == true)
         {
             if (cam.transform.position.x != target.x)
@@ -137,14 +150,14 @@ public class Player_movement : MonoBehaviour
             
             Debug.Log("voltando");
             movevolta = true;
-            
+            receitaabrir.SetActive(false);
         }
         if (movevolta == true) 
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target2.x,target2.y,-11), step);
             moveFogao = false;
             podemovernao = true;
-            
+           
         }
         else 
         {
@@ -158,24 +171,23 @@ public class Player_movement : MonoBehaviour
             moveSpeed = 5;
             podemovernao = false;
             
+           
         }
         if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) 
         {
             moveSpeed = 5;
             podemovernao |= false;
+          
+            
+        }
+
+        if (Input.GetKey(botaodepause))
+        {
+
+            PauseManager.Instance.AbrirOptions();
+
+        }
         
-        }
-        if (cam.transform.position == new Vector3(-17.966f, 0.11f, -11f))
-        {
-            receitas.SetActive(true);
-
-
-        }
-        else if (cam.transform.position != new Vector3(-17.966f, 0.11f, -11f))
-        {
-            receitas.SetActive(false);
-        }
-
     }
 
 
@@ -183,9 +195,19 @@ public class Player_movement : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("descarte") && Input.GetKey(botaointeracao))
+        {            
+            segura = false;
+            Destroy(comidaAtual);
+        }
+        if (collision.CompareTag("pessoaAentregar") && comidaAtual != null && Input.GetKey(botaointeracao)) 
         {
-            GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
-            Destroy(prefab_comidafeita);
+            collision.gameObject.GetComponent<MovmentNPC>().ReceberComida(comidaAtual.GetComponent<comidafeita>().comida);
+        
+        }
+        if (collision.gameObject.CompareTag("radio") && Input.GetKey(botaointeracao))
+        {
+            radio.SetActive(true);
+
         }
         // comida.tasegurando == true &&
     }

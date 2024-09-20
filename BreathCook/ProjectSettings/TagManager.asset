@@ -18,6 +18,9 @@ TagManager:
   - sobremesa
   - descarte
   - balcao
+  - excluir
+  - Prato
+  - radio
   layers:
   - Default
   - TransparentFX
@@ -26,7 +29,7 @@ TagManager:
   - Water
   - UI
   - objetos cozinha
-  - 
+  - UI_cozinha
   - 
   - 
   - 

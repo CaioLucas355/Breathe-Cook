@@ -20,9 +20,8 @@ public class MenuPincipalManager : MonoBehaviour
     }
     public void Jogar()
     {
-        SceneManager.LoadScene(nomeDoLevelDeJogo);
-    }   
-
+        Transition.instance.Transicao(1);   
+    }
     public void AbrirOptions()
     {
         painelMenuInicial.SetActive(false);

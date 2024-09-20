@@ -5,9 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
-
+    public static Transition instance;
     public GameObject panelOut;
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        instance = this;
+    }
+   
     void Start()
     {
         

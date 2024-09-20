@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class receita : MonoBehaviour
 {
@@ -13,7 +11,6 @@ public class receita : MonoBehaviour
     public KeyCode botaoparacontinuarfazendo = KeyCode.H;
     public GameObject[] comida;
     public interacaocozinha[] ingrediente;
-    private int mandarqual = 0;
     public GameObject prato;
     //checar se oo ingrediente está na posição para ser feita a receita, caso não tiver ele retornara falso
     public bool[] combinacao;
@@ -43,10 +40,12 @@ public class receita : MonoBehaviour
                 if (combinacao[1] == true)
                 {
                     FinalizarCombinacao(0);
+                    
                 }
                 else if (combinacao[2] == true)
                 {
                     FinalizarCombinacao(1);
+                    
                 }
                 else if (combinacao[5] == true)
                 {
@@ -78,6 +77,10 @@ public class receita : MonoBehaviour
                 if (combinacao[3] == true && combinacao[4] == true)
                 {
                     FinalizarCombinacao(2);
+                }
+                else if (combinacao[0] == true)
+                {
+                    FinalizarCombinacao(1);
                 }
                 else
                 {
@@ -216,28 +219,30 @@ public class receita : MonoBehaviour
     {
         switch (ingrediente)
         {
-            case 13:
-                if (combinacao[12] == true && combinacao[14])
+            
+
+
+            case 11:
+                if (combinacao[12] == true && combinacao[13] == true)
                 {
                     FinalizarCombinacao(6);
                 }
-                else if (combinacao[12] == true && combinacao[15])
+                else if (combinacao[12] == true && combinacao[14] == true)
                 {
                     FinalizarCombinacao(7);
                 }
                 else
                 {
-                    combinacao[13] = true;
+                    combinacao[11] = true;
                 }
                 break;
 
-
             case 12:
-                if (combinacao[13] == true && combinacao[14])
+                if (combinacao[11] == true && combinacao[13] == true)
                 {
                     FinalizarCombinacao(6);
                 }
-                else if (combinacao[13] == true && combinacao[15])
+                else if (combinacao[11] == true && combinacao[14] == true)
                 {
                     FinalizarCombinacao(7);
                 }
@@ -247,10 +252,21 @@ public class receita : MonoBehaviour
                 }
                 break;
 
-            case 14:
-                if (combinacao[13] == true && combinacao[12] == true)
+            case 13:
+                if (combinacao[12] == true && combinacao[11] == true)
                 {
                     FinalizarCombinacao(6);
+                }
+                else
+                {
+                    combinacao[13] = true;
+                }
+                break;
+
+            case 14:
+                if (combinacao[12] == true && combinacao[11] == true)
+                {
+                    FinalizarCombinacao(7);
                 }
                 else
                 {
@@ -258,17 +274,8 @@ public class receita : MonoBehaviour
                 }
                 break;
 
-            case 15:
-                if (combinacao[13] == true && combinacao[12])
-                {
-                    FinalizarCombinacao(7);
-                }
-                else
-                {
-                    combinacao[15] = true;
-                }
-                break;
 
+           
         }
 
 
@@ -279,6 +286,7 @@ public class receita : MonoBehaviour
 
         Instantiate(comida[comb], prato.transform.position, Quaternion.identity);
         Player_movement.instamce.movevolta = true;
+        ReceitaAbrir.Instance.FecharReceitas();
         StartCoroutine(esperar());
         for (int i = 0; i < combinacao.Length; i++)
         {
