@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class GerenciadordeMusica : MonoBehaviour
@@ -58,7 +57,7 @@ public class GerenciadordeMusica : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _audiosource.volume = volume;
+        _audiosource.volume = PlayerPrefs.GetFloat("Volume");
 
         if (_audiosource.isPlaying)
             _trackTimer += 1 * Time.deltaTime;
