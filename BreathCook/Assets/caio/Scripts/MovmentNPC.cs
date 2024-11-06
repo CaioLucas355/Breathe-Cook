@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class MovmentNPC : MonoBehaviour
-{//
+{
+
     public static MovmentNPC Instance;
 
     [SerializeField] private GameObject pedido1;
@@ -16,15 +18,25 @@ public class MovmentNPC : MonoBehaviour
     [SerializeField] private GameObject pedido6;
     [SerializeField] private GameObject pedido7;
     [SerializeField] private GameObject pedido8;
+    [SerializeField] private GameObject pensamento;
+
+    public int qualanimacao;
+
+    public AnimatorController NPC1;
+    public AnimatorController NPC2;
+    public AnimatorController NPC3;
+    public AnimatorController NPC4;
+    public AnimatorController NPC5;
+
+    Animator animacaoATUAL;
 
     int numero = 2;
 
     [Header("animacao")]
     
-    public Animator animator;
+    public Animator animatorComponente;
     public SpriteRenderer sp;
     
-
     [Header("interacao botao")]
     public KeyCode botao = KeyCode.T;
 
@@ -44,6 +56,7 @@ public class MovmentNPC : MonoBehaviour
     private int pontoAtual;// QUAL PONTO NÓS ESTAMOS
     private Transform[] npcCadeira;
     public bool esperandoPedido, comeuPartiu;
+
     [Header("Movimento do NPC")]
     [SerializeField] private float velocidadeDoNPC;
 
@@ -57,6 +70,10 @@ public class MovmentNPC : MonoBehaviour
     [Header("sentado")]
     public bool sentado;
 
+    [Header("vai vir o")]
+    public int vir_o_;
+    public int numeroDialogo;
+
     private void Awake()
     {
         Instance = this;
@@ -68,9 +85,67 @@ public class MovmentNPC : MonoBehaviour
         sentado = false;
         pontoAtual = 0;
         pratos = GameObject.FindGameObjectsWithTag("Prato");
+        numeroDialogo = gerarNPC.instance.npcsDialogo;
+        
+        if (gerenciadorNPC.instance.podeVoltarAleatorio == true)
+        {
+            qualanimacao = Random.Range(0, 4);
+
+            if (qualanimacao == 0)
+            {
+                animatorComponente.runtimeAnimatorController = NPC1;
+            }
+            if (qualanimacao == 1)
+            {
+                animatorComponente.runtimeAnimatorController = NPC2;
+            }
+            if (qualanimacao == 2)
+            {
+                animatorComponente.runtimeAnimatorController = NPC3;
+            }
+            if (qualanimacao == 3)
+            {
+                animatorComponente.runtimeAnimatorController = NPC4;
+            }
+            if (qualanimacao == 4)
+            {
+                animatorComponente.runtimeAnimatorController = NPC5;
+            }
+        }
+        else 
+        {
+            qualanimacao = 0;
+
+            if (gerenciadorNPC.instance.veio1 == 10)
+            { gerenciadorNPC.instance.veio1 = 0;
+                qualanimacao = 0; animatorComponente.runtimeAnimatorController = NPC1;
+            }
+            else if (gerenciadorNPC.instance.veio1 == 0)
+            {
+                gerenciadorNPC.instance.veio1 = 1;
+                gerenciadorNPC.instance.veio2 = 1;
+                qualanimacao = 1; animatorComponente.runtimeAnimatorController = NPC2;
+            }
+            else if (gerenciadorNPC.instance.veio2 == 1)
+            {   gerenciadorNPC.instance.veio2 = 2;
+                gerenciadorNPC.instance.veio3 = 2;
+                qualanimacao = 2; animatorComponente.runtimeAnimatorController = NPC3;
+            }
+            else if (gerenciadorNPC.instance.veio3 == 2)
+            {
+                gerenciadorNPC.instance.veio3 = 3;
+                gerenciadorNPC.instance.veio4 = 3;
+                qualanimacao = 3; animatorComponente.runtimeAnimatorController = NPC4;
+            }
+            else if (gerenciadorNPC.instance.veio4 == 3)
+            {
+                gerenciadorNPC.instance.veio4 = 4;
+                gerenciadorNPC.instance.veio5 = 5;
+                qualanimacao = 4; animatorComponente.runtimeAnimatorController = NPC5;
+            }
+        }
+        animacaoATUAL = animatorComponente;
     }
-
-
     private void Update()
     {
         if (pedidoFT == false)
@@ -85,71 +160,63 @@ public class MovmentNPC : MonoBehaviour
             }
             if (comeuPartiu == true)
             {
-
                 IrEmbora();
             }
         }
-
-        
-
-
         EspelharHorizontal();
     }
-
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("balcao"))
         {
-            sp.flipX = true;
+            Debug.Log("encostou no balcao");
+            //sp.flipX = true;
             npedido = Random.Range(0, 7);
             if (npedido == 0)
             {
                 pedido1.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 1)
             {
                 pedido2.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 2)
             {
                 pedido3.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 3)
             {
                 pedido4.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 4)
             {
                 pedido5.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 5)
             {
                 pedido6.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 6)
             {
                 pedido7.SetActive(true);
-
+                pensamento.SetActive(true);
             }
             if (npedido == 7)
             {
                 pedido8.SetActive(true);
-
+                pensamento.SetActive(true);
             }
 
             Debug.Log("pedido feito");
             pedidoFT = true;
             EscolherCadeira();
         }
-
 
         if (gameObject.transform == GameManager.Instance.pontosCadeiraA[1])
         {
@@ -189,9 +256,6 @@ public class MovmentNPC : MonoBehaviour
         }
 
     } //fazendo pedido
-
-
-
     public void EscolherCadeira()
     {
         for (int i = 0; i < GameManager.Instance.cadeirasOcupadas.Length; i++)
@@ -251,7 +315,6 @@ public class MovmentNPC : MonoBehaviour
                 }
                 break;
             }
-
         }
     }
     public void IrParaCadeira()
@@ -269,14 +332,9 @@ public class MovmentNPC : MonoBehaviour
                 else
                 {
                     andando = false;
-                    sentado = true;
-                    sp.flipX = true;
-                }
-              
-                
+                    sentado = true;             
+                }               
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraB)
         {
@@ -286,17 +344,16 @@ public class MovmentNPC : MonoBehaviour
             {
                 if (pontoAtual != GameManager.Instance.pontosCadeiraB.Length - 1)
                 {
-                    pontoAtual++;
+                    pontoAtual++;     
                 }
                 else
                 {
                     andando = false;
                     sentado = true;
-                   
+                    sp.flipX = false;
+                      
                 }
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraC)
         {
@@ -311,13 +368,9 @@ public class MovmentNPC : MonoBehaviour
                 else
                 {
                     andando = false;
-                    sentado = true;
-                    sp.flipX = true;
+                    sentado = true; 
                 }
             }
-
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraD)
         {
@@ -333,10 +386,9 @@ public class MovmentNPC : MonoBehaviour
                 {
                     andando = false;
                     sentado = true;
+                    sp.flipX = false;
                 }
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraE)
         {
@@ -351,12 +403,9 @@ public class MovmentNPC : MonoBehaviour
                 else
                 {
                     andando = false;
-                    sentado = true;
-                    sp.flipX = true;
+                    sentado = true;    
                 }
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraF)
         {
@@ -372,10 +421,9 @@ public class MovmentNPC : MonoBehaviour
                 {
                     andando = false;
                     sentado = true;
+                    sp.flipX = false;
                 }
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraG)
         {
@@ -390,12 +438,9 @@ public class MovmentNPC : MonoBehaviour
                 else
                 {
                     andando = false;
-                    sentado = true;
-                    sp.flipX = true;
+                    sentado = true; 
                 }
             }
-
-
         }
         if (npcCadeira == GameManager.Instance.pontosCadeiraH)
         {
@@ -411,14 +456,11 @@ public class MovmentNPC : MonoBehaviour
                 {
                     andando = false;
                     sentado = true;
+                    sp.flipX = false;
                 }
             }
-
-
         }
-
     }
-
     public void IrEmbora()
     {
         switch (numeroCadeira)
@@ -427,10 +469,7 @@ public class MovmentNPC : MonoBehaviour
                 andando = true;
                 transform.position = Vector2.MoveTowards(transform.position, GameManager.Instance.iremboraA[pontoAtual].position, velocidadeDoNPC * Time.deltaTime);
                 if (transform.position == GameManager.Instance.iremboraA[pontoAtual].position)
-                {
-                    
-                    
-                    
+                {    
                     pontoAtual++;
                 }
                 if (pontoAtual >= GameManager.Instance.iremboraA.Length)
@@ -572,9 +611,7 @@ public class MovmentNPC : MonoBehaviour
                 }
                 break;
         }
-
     }
-
     public void ReceberComida(int numeroComida)
     {
         if (numeroComida == npedido)
@@ -590,57 +627,57 @@ public class MovmentNPC : MonoBehaviour
             if (npedido == 0)
             {
                 pedido1.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
             }
             if (npedido == 1)
             {
                 pedido2.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 2)
             {
                 pedido3.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 3)
             {
                 pedido4.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 4)
             {
                 pedido5.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 5)
             {
                 pedido6.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 6)
             {
                 pedido7.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
             if (npedido == 7)
             {
                 pedido8.SetActive(false);
+                pensamento.SetActive(false);
                 sentado = false;
-
             }
         }
         else
         {
             Debug.Log("esqueceu o pedido mano");
         }
-    }
-
+    }   
     IEnumerator esperar()
     {
         esperandoPedido = true;
@@ -648,7 +685,6 @@ public class MovmentNPC : MonoBehaviour
         comeuPartiu = true;       
         pontoAtual = 0;       
     }
-    
     public void MovimentarNPC()
     {
         float step = velocidadeDoNPC * Time.deltaTime;
@@ -658,36 +694,25 @@ public class MovmentNPC : MonoBehaviour
             if (pontoAtual != GameManager.Instance.pontosDoCaixa.Length - 1)
             {
                 pontoAtual++;
-
             }
-            
-
             ultimaPosiçãoX = transform.localPosition.x;
-        
-
         }
     }
-
     private void EspelharHorizontal()
     {
-
-
-        if (andando == true)
+        if (andando == true & transform.localPosition.x < ultimaPosiçãoX)
         {
-            animator.SetInteger("andando", 2);
-            
+            animacaoATUAL.SetInteger("andando", 2);
+            sp.flipX = false;
         }
         else if (andando == true & transform.localPosition.x > ultimaPosiçãoX)
         {
-            animator.SetInteger("andando", 2);
-            
+            animacaoATUAL.SetInteger("andando", 2);
+            sp.flipX = true;
         }
         else if (sentado == true)      
         {
-            animator.SetInteger("andando", 0);
+            animacaoATUAL.SetInteger("andando", 0);
         }
-
-
-
     }
 }

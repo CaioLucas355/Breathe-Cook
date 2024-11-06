@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/projeto/02_Jogo.unity
     guid: 631ebd4425e838545b9e5dd9c71a5cd2
+  - enabled: 1
+    path: Assets/projeto/03_Tutorial.unity
+    guid: 0483a385985154b47a71ff65d02c72a5
   m_configObjects: {}

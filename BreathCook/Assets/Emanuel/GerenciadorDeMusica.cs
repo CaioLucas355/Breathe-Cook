@@ -49,7 +49,7 @@ public class GerenciadordeMusica : MonoBehaviour
 
         if (!_audiosource.isPlaying)
             ChangeSongRandom(Random.Range(0, songs.Length));
-
+    
         StartCoroutine(AutoScrollText());
 
     }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: DialogueData 1
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: Cliente
+    text: "Desculpe mas eu pensei melhor e gostaria de um sandu\xEDche de salm\xE3o."
+  - name: "Emanuel (Voc\xEA)"
+    text: "Tudo certo meu bom, seu pedido ser\xE1 feito."
+  - name: O Tutor
+    text: "Para n\xE3o desperdisar comida, a adicione na doa\xE7\xE3o, clique \"X\"
+      na doa\xE7\xE3o para mandar a comida."
+  - name: O Tutor
+    text: Ao lado tem um radio que clicando "X" podera mudar para uma musica de sua
+      preferencia   ; )

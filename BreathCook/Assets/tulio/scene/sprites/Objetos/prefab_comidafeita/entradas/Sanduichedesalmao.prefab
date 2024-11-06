@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3181382528170686398}
   m_Layer: 0
   m_Name: Sanduichedesalmao
-  m_TagString: Untagged
+  m_TagString: comida
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

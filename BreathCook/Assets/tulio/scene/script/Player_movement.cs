@@ -6,16 +6,20 @@ using UnityEngine;
 
 public class Player_movement : MonoBehaviour
 {
+    DialogueSystem2 dialogueSystem2;
+    public Transform npc;
+
     [Header("transicao")]
     public static Player_movement instamce;
     public GameObject receitaabrir;
-    
+    public GameObject receitaabrir2;
+    public GameObject receitaabrir3;
 
 
     [Header("radio")]
     [SerializeField] private GameObject radio;
 
-
+    public bool tutorial = true;
     public bool segura = false;
     private Vector2 target;
     private Vector2 position;
@@ -49,6 +53,8 @@ public class Player_movement : MonoBehaviour
     public GameObject comidaAtual;
     private void Awake()
     {
+        dialogueSystem2 = FindObjectOfType<DialogueSystem2>();
+
         instamce = this;
     }
 
@@ -80,10 +86,16 @@ public class Player_movement : MonoBehaviour
         if (collision.gameObject.CompareTag("radio"))
         {
             radio.SetActive(false);
-
+        }
+        if (collision.CompareTag("pessoaAentregar"))
+        {
+            NpcDialogue.Instance.readyToSpeak = false;
         }
     }
-
+    private void Update()
+    {
+      
+    }
 
 
     private void FixedUpdate()
@@ -118,6 +130,8 @@ public class Player_movement : MonoBehaviour
             moveFogao = true;
             
             receitaabrir.SetActive(true);
+            receitaabrir2.SetActive(true);
+            receitaabrir3.SetActive(true);
 
 
             // GameObject prefab_comidafeita = GameObject.FindGameObjectWithTag("comidafeita");
@@ -151,13 +165,17 @@ public class Player_movement : MonoBehaviour
             Debug.Log("voltando");
             movevolta = true;
             receitaabrir.SetActive(false);
+            receitaabrir2.SetActive(false);
+            receitaabrir3.SetActive(false);
+            ReceitaAbrir.Instance.FecharReceitas();
+
         }
         if (movevolta == true) 
         {
             cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target2.x,target2.y,-11), step);
             moveFogao = false;
             podemovernao = true;
-           
+            
         }
         else 
         {
@@ -187,10 +205,9 @@ public class Player_movement : MonoBehaviour
             PauseManager.Instance.AbrirOptions();
 
         }
-        
     }
 
-
+    
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -199,20 +216,27 @@ public class Player_movement : MonoBehaviour
             segura = false;
             Destroy(comidaAtual);
         }
+        if (collision.CompareTag("pessoaAentregar"))
+        {
+            NpcDialogue.Instance.readyToSpeak = true;
+        }
         if (collision.CompareTag("pessoaAentregar") && comidaAtual != null && Input.GetKey(botaointeracao)) 
         {
             collision.gameObject.GetComponent<MovmentNPC>().ReceberComida(comidaAtual.GetComponent<comidafeita>().comida);
         
+        }
+        if (collision.CompareTag("pessoaAentregar2") && comidaAtual != null && Input.GetKey(botaointeracao))
+        {
+            collision.gameObject.GetComponent<NPC_tutorial>().ReceberComida(comidaAtual.GetComponent<comidafeita>().comida);
+
         }
         if (collision.gameObject.CompareTag("radio") && Input.GetKey(botaointeracao))
         {
             radio.SetActive(true);
 
         }
+
         // comida.tasegurando == true &&
     }
-
-
-
 
 }

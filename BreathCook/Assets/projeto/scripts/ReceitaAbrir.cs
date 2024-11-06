@@ -18,7 +18,7 @@ public class ReceitaAbrir : MonoBehaviour
     }
     public void Receita1()
     {
-        image.SetActive(true);
+        image.SetActive(false);
         painelRC1.SetActive(true);
         painelRC2.SetActive(false);
         painelRC3.SetActive(false);

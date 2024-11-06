@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: Ricardo
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: Emmanuel
+    text: 'Bom dia! Tudo bem? Como posso lhe ajudar?
+
+'
+  - name: Ricardo
+    text: "Bom dia! Nada que possa melhorar com um bom ch\xE1, n\xE3o \xE9 mesmo?
+      \r\n"
+  - name: Emmanuel
+    text: "Com certeza! O que mais sai \xE9 o nosso ch\xE1 de p\xEAssego, gostaria
+      de experimentar?\r\n"
+  - name: Ricardo
+    text: "Claro! Me traz um sandu\xEDche, por favor? Esse lugar me transmite tanta
+      paz\u2026\r\n"
+  - name: Emmanuel
+    text: 'Pensamos para isso mesmo, ser um lugar em que pudesse relaxar, fico feliz
+      que tenha gostado. Logo, logo trago seu pedido.
+
+'
+  - name: Ricardo
+    text: 'Obrigado!
+
+'

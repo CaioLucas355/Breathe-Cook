@@ -21,6 +21,9 @@ TagManager:
   - excluir
   - Prato
   - radio
+  - comida
+  - pessoaAentregar2
+  - Npc
   layers:
   - Default
   - TransparentFX

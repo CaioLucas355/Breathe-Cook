@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: Regina
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: Regina
+    text: "Boa noite! Estava passando em frente e amei a proposta do restaurante,
+      tamb\xE9m serve janta?"
+  - name: Emmanuel
+    text: "Boa noite! Tudo bem? Seja bem-vinda ao Breathe e Cook! Servimos sim, fico
+      feliz pelo feedback, nosso restaurante preza pelo al\xEDvio da ansiedade rotineira.\r\n"
+  - name: Regina
+    text: "Que legal!! Vou querer a sugest\xE3o do chefe, por favor.\r\n"
+  - name: Emmanuel
+    text: "Ok! Fique \xE0 vontade.\r\n"
+  - name: Regina
+    text: ' Obrigada, voltarei mais vezes.'

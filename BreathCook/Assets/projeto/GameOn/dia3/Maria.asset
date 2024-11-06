@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: Maria
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: Emmanuel
+    text: Boa tarde! Bem-vinda ao Breathe e Cook. O que posso te ajudar?
+  - name: Maria
+    text: Boa tarde! Gostaria de fazer um pedido..... Ademais, gostei desse lugar.
+      Aqui parece ser um lugar tranquilo e aconchegante.
+  - name: Emmanuel
+    text: "Fico feliz que voc\xEA esteja achando o lugar tranquilo e agrad\xE1vel.
+      Na verdade, criar esse ambiente foi uma das minhas principais prioridades e
+      conquistas. \r\n"
+  - name: Maria
+    text: "Que interessante! Isso \xE9 muito inspirador. \r\n"
+  - name: Emmanuel
+    text: " \xC9 um caminho dif\xEDcil, mas necess\xE1rio. Deseja mais alguma coisa?\r\n"
+  - name: Maria
+    text: "N\xE3o, Emmanuel, obrigada pelo excelente atendimento.\r\n"
+  - name: Emmanuel
+    text: Disponha Maria! Qualquer coisa estou aqui!

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: DialogueData2
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: ' O Tutor'
+    text: Bem-vindo ao tutorial, WSAD e ultilizar as SETAS faz o Emmanuel andar.
+      [aperte "F" para continuar]
+  - name: O Tutor
+    text: "Vamos Come\xE7ar o tutorial, primeiro observe o pedido do cliente no bal\xE3o
+      em cima dele, depois vai at\xE9 em cima do tapete cozinha e pressione X. [aperte
+      \"F\" para continuar]"
+  - name: O Tutor
+    text: "Para voltar aperte \"Z\".               \n[aperte \"F\" para continuar]"
+  - name: O Tutor
+    text: Volte a cozinha para continuar o tutorial            [aperte "F" para continuar]
+  - name: O Tutor
+    text: "Agora clique com o bot\xE3o esquerdo do no livro das entradas. (O LIVRO
+      DO MEIO)\n\t\t\t\t\t\t   \t         [aperte \"F\" para continuar]"

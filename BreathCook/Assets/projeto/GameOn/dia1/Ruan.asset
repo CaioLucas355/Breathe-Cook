@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05086ec26adb4594c8e742f78ac7ea28, type: 3}
+  m_Name: Ruan
+  m_EditorClassIdentifier: 
+  talkScript:
+  - name: 'Emmanuel '
+    text: "Seja bem-vindo ao Breathe e Cook, como posso ajud\xE1-lo?\r\n"
+  - name: Ricardo
+    text: "Ol\xE1, gostaria primeiramente de parabenizar pelo restaurante, ele \xE9
+      bem acolhedor e acochegante! "
+  - name: 'Emmanuel '
+    text: "Muito Obrigado! Criei o restaurante para que qualquer um possa ser bem
+      recebido da melhor maneira poss\xEDvel, um lugar para se refugiar dos conflitos."
+  - name: Ricardo
+    text: "Seu objetivo foi bem concluido, sinto-me muito bem nesse lugar. Ademais,
+      estive olhando o card\xE1pio e gostaria de faze rum pedido."
+  - name: 'Emmanuel '
+    text: "\xD3timo, o que gostaria de pedir?"

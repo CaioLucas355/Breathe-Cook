@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class receita : MonoBehaviour
@@ -12,6 +13,9 @@ public class receita : MonoBehaviour
     public GameObject[] comida;
     public interacaocozinha[] ingrediente;
     public GameObject prato;
+
+
+    
     //checar se oo ingrediente está na posição para ser feita a receita, caso não tiver ele retornara falso
     public bool[] combinacao;
     private void Awake()
@@ -145,6 +149,7 @@ public class receita : MonoBehaviour
                 if (combinacao[6] == true && combinacao[7] == true)
                 {
                     FinalizarCombinacao(4);
+                   
                 }
                 else
                 {
@@ -160,6 +165,7 @@ public class receita : MonoBehaviour
                 if (combinacao[8] == true && combinacao[7] == true)
                 {
                     FinalizarCombinacao(4);
+                   
                 }
                 else
                 {
@@ -174,6 +180,7 @@ public class receita : MonoBehaviour
                 if (combinacao[6] == true && combinacao[8] == true)
                 {
                     FinalizarCombinacao(4);
+                   
                 }
                 else
                 {
@@ -188,6 +195,7 @@ public class receita : MonoBehaviour
                 if (combinacao[10] == true )
                 {
                     FinalizarCombinacao(5);
+                  
                 }
                 else
                 {
@@ -200,6 +208,7 @@ public class receita : MonoBehaviour
                 if (combinacao[9] == true )
                 {
                     FinalizarCombinacao(5);
+                   
                 }
                 else
                 {
@@ -287,6 +296,7 @@ public class receita : MonoBehaviour
         Instantiate(comida[comb], prato.transform.position, Quaternion.identity);
         Player_movement.instamce.movevolta = true;
         ReceitaAbrir.Instance.FecharReceitas();
+        
         StartCoroutine(esperar());
         for (int i = 0; i < combinacao.Length; i++)
         {

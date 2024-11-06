@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32bac9298d829334e97a1cfc7dc6ed98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comida: 2
+  comida: 1
   mesaposicao: {fileID: 0}
   tasegurando: 0
   botaosegurar: 118
