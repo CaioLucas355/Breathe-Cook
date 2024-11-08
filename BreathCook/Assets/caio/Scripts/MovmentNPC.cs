@@ -7,17 +7,12 @@ using UnityEngine;
 
 public class MovmentNPC : MonoBehaviour
 {
+    public int wait;
 
     public static MovmentNPC Instance;
 
-    [SerializeField] private GameObject pedido1;
-    [SerializeField] private GameObject pedido2;
-    [SerializeField] private GameObject pedido3;
-    [SerializeField] private GameObject pedido4;
-    [SerializeField] private GameObject pedido5;
-    [SerializeField] private GameObject pedido6;
-    [SerializeField] private GameObject pedido7;
-    [SerializeField] private GameObject pedido8;
+    public List<GameObject> pedidos;
+    public int[] pedidoList;
     [SerializeField] private GameObject pensamento;
 
     public int qualanimacao;
@@ -167,56 +162,22 @@ public class MovmentNPC : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("balcao"))
+        //ahsgdfhavsdjhabvsda
+        if (collision.gameObject.CompareTag("balcao") && wait == 0)
         {
-            Debug.Log("encostou no balcao");
-            //sp.flipX = true;
-            npedido = Random.Range(0, 7);
-            if (npedido == 0)
+            npedido = Random.Range(0, 6);
+            if (npedido == pedidoList[npedido])
             {
-                pedido1.SetActive(true);
-                pensamento.SetActive(true);
+                pedidos[npedido].SetActive(true);
+                pensamento.SetActive (true);
             }
-            if (npedido == 1)
-            {
-                pedido2.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 2)
-            {
-                pedido3.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 3)
-            {
-                pedido4.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 4)
-            {
-                pedido5.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 5)
-            {
-                pedido6.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 6)
-            {
-                pedido7.SetActive(true);
-                pensamento.SetActive(true);
-            }
-            if (npedido == 7)
-            {
-                pedido8.SetActive(true);
-                pensamento.SetActive(true);
-            }
-
             Debug.Log("pedido feito");
             pedidoFT = true;
             EscolherCadeira();
+            StartCoroutine(Esperar());
         }
+        //asukjhdgjayhsgdahsgd
+
 
         if (gameObject.transform == GameManager.Instance.pontosCadeiraA[1])
         {
@@ -624,54 +585,12 @@ public class MovmentNPC : MonoBehaviour
             pratos[numeroCadeira].transform.position = comidaNaMesa.transform.position;
 
             StartCoroutine(esperar());
-            if (npedido == 0)
+            if (npedido == pedidoList[npedido])
             {
-                pedido1.SetActive(false);
+                pedidos[npedido].SetActive(false);
                 pensamento.SetActive(false);
                 sentado = false;
-            }
-            if (npedido == 1)
-            {
-                pedido2.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 2)
-            {
-                pedido3.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 3)
-            {
-                pedido4.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 4)
-            {
-                pedido5.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 5)
-            {
-                pedido6.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 6)
-            {
-                pedido7.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
-            if (npedido == 7)
-            {
-                pedido8.SetActive(false);
-                pensamento.SetActive(false);
-                sentado = false;
-            }
+            } 
         }
         else
         {
@@ -714,5 +633,11 @@ public class MovmentNPC : MonoBehaviour
         {
             animacaoATUAL.SetInteger("andando", 0);
         }
+    }
+    IEnumerator Esperar()
+    {
+        wait = 1;
+        yield return new WaitForSeconds(0.2f);
+        wait = 0;
     }
 }

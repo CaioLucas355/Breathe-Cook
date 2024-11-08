@@ -12,8 +12,8 @@ public class gerarNPC : MonoBehaviour
     public GameObject localspawn;
 
     int maximodeNPCs;
-    int freq1 = 14;
-    int freq2 = 20;
+    int freq1 = 1; //ERA 14
+    int freq2 = 5;//ERA 20
     public int npcsDialogo;
 
     [Header("Porta")]

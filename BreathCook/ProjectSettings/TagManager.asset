@@ -11,19 +11,19 @@ TagManager:
   - camumila
   - mesaposicao
   - player
-  - pessoaAentregar
   - comidafeita
   - comidacomcliente
   - entrada
   - sobremesa
   - descarte
-  - balcao
   - excluir
   - Prato
   - radio
   - comida
   - pessoaAentregar2
   - Npc
+  - balcao
+  - pessoaAentregar
   layers:
   - Default
   - TransparentFX
