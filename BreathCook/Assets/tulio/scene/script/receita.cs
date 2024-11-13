@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class receita : MonoBehaviour
 {
+    AuudioManager audioManager;
     public static receita instance;
     [Header("botao para mandar comida")]
     public KeyCode botaoparamandarcomida = KeyCode.G;
@@ -21,6 +22,8 @@ public class receita : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        audioManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<AuudioManager>();
+
     }
     // Start is called before the first frame update
     void Start()
@@ -294,8 +297,9 @@ public class receita : MonoBehaviour
     {
 
         Instantiate(comida[comb], prato.transform.position, Quaternion.identity);
+        audioManager.PlaySFX(audioManager.PedidoPronto);
         Player_movement.instamce.movevolta = true;
-        ReceitaAbrir.Instance.FecharReceitas();
+     
         
         StartCoroutine(esperar());
         for (int i = 0; i < combinacao.Length; i++)

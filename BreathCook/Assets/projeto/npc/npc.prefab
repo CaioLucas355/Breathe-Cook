@@ -217,14 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b5354970c2ed743b610fbb02ed64e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogo: 0
   wait: 0
-  pedido1: {fileID: 5221144626637356947}
-  pedido2: {fileID: 7390237456032402090}
-  pedido3: {fileID: 8529626802723740249}
-  pedido4: {fileID: 618928435122654840}
-  pedido5: {fileID: 7802316810568194610}
-  pedido6: {fileID: 3641266841878271183}
-  pedido7: {fileID: 7030304169594777333}
   pedidos:
   - {fileID: 5221144626637356947}
   - {fileID: 7390237456032402090}
@@ -236,12 +230,12 @@ MonoBehaviour:
   pedidoList: 00000000010000000200000003000000040000000500000006000000
   pensamento: {fileID: 4381880413625607891}
   qualanimacao: 0
-  NPC1: {fileID: 9100000, guid: 013dc4a530be94e4fa909ffb180a8983, type: 2}
-  NPC2: {fileID: 9100000, guid: a1b6db5882ef0ec4b84b92532d1c94e1, type: 2}
-  NPC3: {fileID: 9100000, guid: 7c75d41707021f749b0d3d19a8377be7, type: 2}
-  NPC4: {fileID: 9100000, guid: 4b4bc761a9c85c140876f43c0cff5ed7, type: 2}
-  NPC5: {fileID: 9100000, guid: 605c5ba926afa2c4fbdaa2319984d9cc, type: 2}
-  animatorComponente: {fileID: 7482765506312434225}
+  NPCAniamtors:
+  - {fileID: 9100000, guid: 013dc4a530be94e4fa909ffb180a8983, type: 2}
+  - {fileID: 9100000, guid: a1b6db5882ef0ec4b84b92532d1c94e1, type: 2}
+  - {fileID: 9100000, guid: 7c75d41707021f749b0d3d19a8377be7, type: 2}
+  - {fileID: 9100000, guid: 4b4bc761a9c85c140876f43c0cff5ed7, type: 2}
+  - {fileID: 9100000, guid: 605c5ba926afa2c4fbdaa2319984d9cc, type: 2}
   sp: {fileID: 7901127569841186680}
   botao: 116
   NpcBx: {fileID: 4851654364927485872}
@@ -257,6 +251,7 @@ MonoBehaviour:
   sentado: 0
   vir_o_: 0
   numeroDialogo: 0
+  historia: 0
 --- !u!95 &7482765506312434225
 Animator:
   serializedVersion: 5

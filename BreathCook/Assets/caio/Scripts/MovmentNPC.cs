@@ -7,9 +7,11 @@ using UnityEngine;
 
 public class MovmentNPC : MonoBehaviour
 {
-    public int wait;
+    AuudioManager audioManager;
 
-    public static MovmentNPC Instance;
+    public int dialogo;
+
+    public int wait;
 
     public List<GameObject> pedidos;
     public int[] pedidoList;
@@ -17,11 +19,7 @@ public class MovmentNPC : MonoBehaviour
 
     public int qualanimacao;
 
-    public AnimatorController NPC1;
-    public AnimatorController NPC2;
-    public AnimatorController NPC3;
-    public AnimatorController NPC4;
-    public AnimatorController NPC5;
+    public AnimatorController[] NPCAniamtors;
 
     Animator animacaoATUAL;
 
@@ -29,7 +27,6 @@ public class MovmentNPC : MonoBehaviour
 
     [Header("animacao")]
     
-    public Animator animatorComponente;
     public SpriteRenderer sp;
     
     [Header("interacao botao")]
@@ -69,9 +66,11 @@ public class MovmentNPC : MonoBehaviour
     public int vir_o_;
     public int numeroDialogo;
 
+    public bool historia;
     private void Awake()
     {
-        Instance = this;
+        audioManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<AuudioManager>();
+
     }
 
     private void Start()
@@ -81,65 +80,15 @@ public class MovmentNPC : MonoBehaviour
         pontoAtual = 0;
         pratos = GameObject.FindGameObjectsWithTag("Prato");
         numeroDialogo = gerarNPC.instance.npcsDialogo;
-        
-        if (gerenciadorNPC.instance.podeVoltarAleatorio == true)
+        animacaoATUAL = GetComponent<Animator>();
+        if (!historia)
         {
-            qualanimacao = Random.Range(0, 4);
-
-            if (qualanimacao == 0)
-            {
-                animatorComponente.runtimeAnimatorController = NPC1;
-            }
-            if (qualanimacao == 1)
-            {
-                animatorComponente.runtimeAnimatorController = NPC2;
-            }
-            if (qualanimacao == 2)
-            {
-                animatorComponente.runtimeAnimatorController = NPC3;
-            }
-            if (qualanimacao == 3)
-            {
-                animatorComponente.runtimeAnimatorController = NPC4;
-            }
-            if (qualanimacao == 4)
-            {
-                animatorComponente.runtimeAnimatorController = NPC5;
-            }
+            animacaoATUAL.runtimeAnimatorController = NPCAniamtors[Random.Range(1, NPCAniamtors.Length)];
         }
-        else 
+        else
         {
-            qualanimacao = 0;
-
-            if (gerenciadorNPC.instance.veio1 == 10)
-            { gerenciadorNPC.instance.veio1 = 0;
-                qualanimacao = 0; animatorComponente.runtimeAnimatorController = NPC1;
-            }
-            else if (gerenciadorNPC.instance.veio1 == 0)
-            {
-                gerenciadorNPC.instance.veio1 = 1;
-                gerenciadorNPC.instance.veio2 = 1;
-                qualanimacao = 1; animatorComponente.runtimeAnimatorController = NPC2;
-            }
-            else if (gerenciadorNPC.instance.veio2 == 1)
-            {   gerenciadorNPC.instance.veio2 = 2;
-                gerenciadorNPC.instance.veio3 = 2;
-                qualanimacao = 2; animatorComponente.runtimeAnimatorController = NPC3;
-            }
-            else if (gerenciadorNPC.instance.veio3 == 2)
-            {
-                gerenciadorNPC.instance.veio3 = 3;
-                gerenciadorNPC.instance.veio4 = 3;
-                qualanimacao = 3; animatorComponente.runtimeAnimatorController = NPC4;
-            }
-            else if (gerenciadorNPC.instance.veio4 == 3)
-            {
-                gerenciadorNPC.instance.veio4 = 4;
-                gerenciadorNPC.instance.veio5 = 5;
-                qualanimacao = 4; animatorComponente.runtimeAnimatorController = NPC5;
-            }
+            animacaoATUAL.runtimeAnimatorController = NPCAniamtors[0];
         }
-        animacaoATUAL = animatorComponente;
     }
     private void Update()
     {
@@ -165,6 +114,7 @@ public class MovmentNPC : MonoBehaviour
         //ahsgdfhavsdjhabvsda
         if (collision.gameObject.CompareTag("balcao") && wait == 0)
         {
+            audioManager.PlaySFX(audioManager.FazendoPedido);
             npedido = Random.Range(0, 6);
             if (npedido == pedidoList[npedido])
             {
@@ -442,6 +392,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual -1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
 
@@ -461,6 +420,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual -1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 2:
@@ -479,6 +447,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 3:
@@ -497,6 +474,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 4:
@@ -515,6 +501,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 5:
@@ -533,6 +528,15 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 6:
@@ -550,7 +554,16 @@ public class MovmentNPC : MonoBehaviour
                     Destroy(comidaNaMesa.gameObject);
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
-                    limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1; 
+                    limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
             case 7:
@@ -569,14 +582,25 @@ public class MovmentNPC : MonoBehaviour
                     comidaNaMesa = null;
                     GameManager.Instance.cadeirasOcupadas[numeroCadeira] = false;
                     limiteNPC.Instance.N_atual = limiteNPC.Instance.N_atual - 1;
+
+                    if (historia)
+                    {
+                        if (gerarNPC.instance.naoSpawn)
+                        {
+                            gerarNPC.instance.IniciarSpawn();
+                            NpcDialogue.Instance.dialogoNumero++;
+                        }
+                    }
                 }
                 break;
         }
+
     }
     public void ReceberComida(int numeroComida)
     {
         if (numeroComida == npedido)
         {
+            audioManager.PlaySFX(audioManager.EntregarPedido);
             Player_movement.instamce.segura = false;
             comidaNaMesa = Player_movement.instamce.comidaAtual.GetComponent<comidafeita>();
             comidaNaMesa.tasegurando = false;

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class MenuPincipalManager : MonoBehaviour
 {
+    AuudioManager audioManager; 
     public static MenuPincipalManager Instance;
     [SerializeField] private string nomeDoLevelDeJogo;
     [SerializeField] private Scene Tutorial;
@@ -17,16 +18,20 @@ public class MenuPincipalManager : MonoBehaviour
     public Slider musicSlider;
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<AuudioManager>();
+
         Instance = this;
         musicSlider.value = PlayerPrefs.GetFloat("Volume");
     }
     public void Jogar()
     {
+        audioManager.PlaySFX(audioManager.EntregarPedido);
         enfeites.SetActive(false);
         Transition.instance.Transicao(1);   
     }
     public void AbrirOptions()
-    {   
+    {
+        audioManager.PlaySFX(audioManager.Selecionar);
         painelMenuInicial.SetActive(false);
         painelOptiones.SetActive(true);
         painelCreditos.SetActive(false);
@@ -34,6 +39,7 @@ public class MenuPincipalManager : MonoBehaviour
     }
     public void FecharOptiones()
     {
+        audioManager.PlaySFX(audioManager.Sair);
         painelOptiones.SetActive(false);
         painelMenuInicial.SetActive(true);
         painelCreditos.SetActive(false);
@@ -42,6 +48,7 @@ public class MenuPincipalManager : MonoBehaviour
     
     public void CreditosGame()
     {
+        audioManager.PlaySFX(audioManager.Selecionar);
         painelCreditos.SetActive(true);
         painelMenuInicial.SetActive(false);
         painelOptiones.SetActive(false);
@@ -49,6 +56,7 @@ public class MenuPincipalManager : MonoBehaviour
     }
     public void FecharCreditos()
     {
+        audioManager.PlaySFX(audioManager.Sair);
         painelOptiones.SetActive(false);
         painelMenuInicial.SetActive(true);
         painelCreditos.SetActive(false);
@@ -56,12 +64,14 @@ public class MenuPincipalManager : MonoBehaviour
     }
     public void SairJogo()
     {
+        audioManager.PlaySFX(audioManager.Sair);
         enfeites.SetActive(false);
         Debug.Log("Sair do Jogo");
         Application.Quit();
     }
     public void AbrirTutorial()
     {
+        audioManager.PlaySFX(audioManager.Selecionar);
         enfeites.SetActive(false);
         Debug.Log("Ir pro Tutorial");
 

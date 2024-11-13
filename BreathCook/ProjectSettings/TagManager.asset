@@ -24,6 +24,7 @@ TagManager:
   - Npc
   - balcao
   - pessoaAentregar
+  - SFX
   layers:
   - Default
   - TransparentFX

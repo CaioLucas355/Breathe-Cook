@@ -7,199 +7,88 @@ using UnityEngine.UI;
 public class NpcDialogue : MonoBehaviour
 
 {
+    AuudioManager audioManager;
+
     public static NpcDialogue Instance;
-    [Header("UI")]
     public TextMeshProUGUI nameNpc;
-    //public Image imageNpc;
-   // public Sprite spriteNpc;
-
-    [Header("Dialogue")]
-
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
-    private TextMeshProUGUI dialogueTextsave;
+    public string[] dia1;
+    public string[] dia2;
+    public string[] dia3;
+    public string[] dia4;
+    public string[] dia5;
+    public int dialogoNumero;
+    public int numero = 0;
+    public bool esperar;
+    public bool pressed;
+    
 
-    [Header("NPC")]
-    public string[] dialogueNpc1;
-    public string[] dialogueNpc2;
-    public string[] dialogueNpc3;
-    public string[] dialogueNpc4;
-    public string[] dialogueNpc5;
-    public int dialogueIndex;
-    public int dialogueNPC_n;
+    public bool esperarDialogo;
+
+    Dictionary<int, string[]> dialogueList = new Dictionary<int, string[]>();
 
 
-    [Header("Bools")]
-    public bool readyToSpeak;
-    public bool starDialogue;
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<AuudioManager>();
         Instance = this;
     }
     void Start()
     {
         dialoguePanel.SetActive(false);
-        dialogueTextsave = dialogueText;
-        
-        if (dialogueNPC_n == 0)
-        {
-            dialogueText.text = dialogueNpc1[dialogueIndex];
-            nameNpc.text = "Maria";
-        }
-        if (dialogueNPC_n == 1)
-        {
-            dialogueText.text = dialogueNpc2[dialogueIndex];
-            nameNpc.text = "Ricardo";
-        }
-        if (dialogueNPC_n == 2)
-        {
-            dialogueText.text = dialogueNpc3[dialogueIndex];
-            nameNpc.text = "Regina";
-        }
-        if (dialogueNPC_n == 3)
-        {
-            dialogueText.text = dialogueNpc4[dialogueIndex];
-            nameNpc.text = "Marcelo";
-        }
-        if (dialogueNPC_n == 4)
-        {
-            dialogueText.text = dialogueNpc5[dialogueIndex];
-            nameNpc.text = "Guilherme";
-        }
+        numero = 0;
+
+        dialogueList.Add(0, dia1);
+        dialogueList.Add(1, dia2);
+        dialogueList.Add(2, dia3);
+        dialogueList.Add(3, dia4);
+        dialogueList.Add(4, dia5);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
-        {
-            if (starDialogue == false)
-            {
-                FindObjectOfType<Player_movement>().moveSpeed = 0;
-                StarDialogue();
-            }
-            else if ( MovmentNPC.Instance.qualanimacao == 0 || MovmentNPC.Instance.qualanimacao == 1 || MovmentNPC.Instance.qualanimacao == 2 || MovmentNPC.Instance.qualanimacao == 3 || MovmentNPC.Instance.qualanimacao == 4)
-            {
-                Debug.Log("passou TT");
-                    if (dialogueText.text == dialogueNpc1[dialogueIndex] && dialogueNPC_n == 0)
-                    {
-                      Debug.Log("aaa1");
-                        NextDialogue();
-                    }
-                
-                
-                    
-                    if ( dialogueText.text == dialogueNpc2[dialogueIndex] && dialogueNPC_n == 1)
-                    {
-                     Debug.Log("aaa2");
-                      NextDialogue();
-                    }
-                
-                
-                   
-                    if (dialogueText.text == dialogueNpc3[dialogueIndex] && dialogueNPC_n == 2)
-                    {
-                     Debug.Log("aaa3");
-                     NextDialogue();
-                    }
-                
-                
-                   
-                    if (dialogueText.text == dialogueNpc4[dialogueIndex] && dialogueNPC_n == 3)
-                    {
-                     Debug.Log("aaa4");
-                     NextDialogue();
-                    }
-                
-                
-                
-                    if (dialogueText.text == dialogueNpc5[dialogueIndex] && dialogueNPC_n == 4)
-                    {
-                     Debug.Log("aaa5");
-                     NextDialogue();
-                    }
-                
-            }
-        }
-
-        
+        MostrarDialogo(dialogueList[dialogoNumero]);
     }
-    public void NextDialogue()
+    public void MostrarDialogo(string[] dialogo)
     {
-        dialogueIndex++;
-        if(dialogueIndex < dialogueNpc1.Length|| dialogueIndex < dialogueNpc2.Length || dialogueIndex < dialogueNpc3.Length || dialogueIndex < dialogueNpc4.Length || dialogueIndex < dialogueNpc5.Length)
+        if (Player_movement.instamce.readyToSpeak == true && esperar == false)
         {
-            if (dialogueNPC_n == 0) 
+            Player_movement.instamce.moveSpeed = 0;
+            dialoguePanel.SetActive(true);
+            dialogueText.text = dialogo[numero];
+            
+            if (Input.GetKey(KeyCode.E) && esperarDialogo)
             {
-                dialogueText.text = dialogueNpc1[dialogueIndex];
+                numero++;
+                StartCoroutine(audio());
+                StartCoroutine(EsperarDialogo());
             }
-            if (dialogueNPC_n == 1)
-            {
-                dialogueText.text = dialogueNpc2[dialogueIndex];
-            }
-            if (dialogueNPC_n == 2)
-            {
-                dialogueText.text = dialogueNpc3[dialogueIndex];
-            }
-            if (dialogueNPC_n == 3)
-            {
-                dialogueText.text = dialogueNpc4[dialogueIndex];
-            }
-            if (dialogueNPC_n == 4)
-            {
-                dialogueText.text = dialogueNpc5[dialogueIndex];
-            }
-            // StartCoroutine(ShowDialogue());
         }
-        else if (dialogueIndex >= dialogueNpc1.Length || dialogueIndex >= dialogueNpc2.Length || dialogueIndex >= dialogueNpc3.Length || dialogueIndex >= dialogueNpc4.Length || dialogueIndex > dialogueNpc5.Length)
+        if (numero >= dialogo.Length)
         {
             dialoguePanel.SetActive(false);
-            starDialogue = false;
-            dialogueIndex = 0;
-            dialogueNPC_n++;
-            dialogueText = dialogueTextsave;
-            FindObjectOfType<Player_movement>().moveSpeed = 5f;
-            Debug.Log("JSADHDFIOUAS" + dialogueIndex);
+            numero = 0;
+            StartCoroutine(Esperar());
+            Player_movement.instamce.moveSpeed = 5;
         }
-    }
-    public void StarDialogue()
+
+    } 
+    IEnumerator EsperarDialogo()
     {
-       
-        starDialogue = true;
-        dialogueIndex = 0;
-        dialoguePanel.SetActive(true);
-        // StartCoroutine(ShowDialogue());
-
+        esperarDialogo = false;
+        yield return new WaitForSeconds(0.2f);
+        esperarDialogo = true;
     }
-    /* IEnumerator ShowDialogue()
-     {
-
-
-
-         foreach (char letter in dialogueNpc1[dialogueIndex])
-         {
-             dialogueText.text += letter;
-             yield return new WaitForSeconds(0.1f);
-
-         }
-         foreach (char letter in dialogueNpc2[dialogueIndex])
-         {
-             dialogueText.text += letter;
-             yield return new WaitForSeconds(0.1f);
-         }
-         foreach (char letter in dialogueNpc3[dialogueIndex])
-         {
-             dialogueText.text += letter;
-             yield return new WaitForSeconds(0.1f);
-         }
-         foreach (char letter in dialogueNpc4[dialogueIndex])
-         {
-             dialogueText.text += letter;
-             yield return new WaitForSeconds(0.1f);
-         }
-         foreach (char letter in dialogueNpc5[dialogueIndex])
-         {
-             dialogueText.text += letter;
-             yield return new WaitForSeconds(0.1f);
-         }
-     } */
+    IEnumerator Esperar()
+    {
+        esperar = true;
+        yield return new WaitForSeconds(1);
+        esperar = false;
+    }
+    IEnumerator audio()
+    {
+        audioManager.PlaySFX(audioManager.oi);
+        yield return null;
+    }
 }

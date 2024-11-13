@@ -8,6 +8,8 @@ public class Player_movement : MonoBehaviour
 {
     DialogueSystem2 dialogueSystem2;
     public Transform npc;
+    public bool readyToSpeak = false;
+    public int dialogo;
 
     [Header("transicao")]
     public static Player_movement instamce;
@@ -67,34 +69,9 @@ public class Player_movement : MonoBehaviour
     }
 
 
-    // interacao
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("balcaocomida"))
-        {
-            tacolidindo = true;
-        }
-    }
-
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("balcaocomida"))
-        {
-            tacolidindo = false;
-        }
-        if (collision.gameObject.CompareTag("radio"))
-        {
-            radio.SetActive(false);
-        }
-        if (collision.CompareTag("pessoaAentregar"))
-        {
-            NpcDialogue.Instance.readyToSpeak = false;
-        }
-    }
     private void Update()
     {
-      
+
     }
 
 
@@ -128,7 +105,7 @@ public class Player_movement : MonoBehaviour
 
             Debug.Log("andando");
             moveFogao = true;
-            
+
             receitaabrir.SetActive(true);
             receitaabrir2.SetActive(true);
             receitaabrir3.SetActive(true);
@@ -143,14 +120,14 @@ public class Player_movement : MonoBehaviour
             Debug.Log("doe a comida");
 
         }
-        
+
         if (moveFogao == true)
         {
             if (cam.transform.position.x != target.x)
             {
                 moveSpeed = 0;
                 cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target.x, target.y, -11), step);
-                
+
                 movevolta = false;
             }
             else
@@ -159,9 +136,9 @@ public class Player_movement : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(botaointeracaosair))
+        if (Input.GetKey(botaointeracaosair) & movevolta == false)
         {
-            
+
             Debug.Log("voltando");
             movevolta = true;
             receitaabrir.SetActive(false);
@@ -170,33 +147,33 @@ public class Player_movement : MonoBehaviour
             ReceitaAbrir.Instance.FecharReceitas();
 
         }
-        if (movevolta == true) 
+        if (movevolta == true)
         {
-            cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target2.x,target2.y,-11), step);
+            cam.transform.position = Vector3.MoveTowards(cam.transform.position, new Vector3(target2.x, target2.y, -11), step);
             moveFogao = false;
             podemovernao = true;
-            
+
         }
-        else 
+        else
         {
-           
+
             movevolta = false;
         }
 
         if (podemovernao == true && cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
         {
-            
+
             moveSpeed = 5;
             podemovernao = false;
-            
-           
+
+
         }
-        if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f)) 
+        if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
         {
             moveSpeed = 5;
             podemovernao |= false;
-          
-            
+
+
         }
 
         if (Input.GetKey(botaodepause))
@@ -205,25 +182,56 @@ public class Player_movement : MonoBehaviour
             PauseManager.Instance.AbrirOptions();
 
         }
+
     }
 
-    
+
+    // interacao
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("balcaocomida"))
+        {
+            tacolidindo = true;
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("balcaocomida"))
+        {
+            tacolidindo = false;
+        }
+        if (collision.gameObject.CompareTag("radio"))
+        {
+            radio.SetActive(false);
+        }
+        if (collision.CompareTag("pessoaAentregar"))
+        {
+            readyToSpeak = false;
+        }
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("descarte") && Input.GetKey(botaointeracao))
-        {            
+        {
             segura = false;
             Destroy(comidaAtual);
         }
-        if (collision.CompareTag("pessoaAentregar"))
+
+        if (Input.GetKey(botaointeracao) && collision.CompareTag("pessoaAentregar"))
         {
-            NpcDialogue.Instance.readyToSpeak = true;
+            if (collision.gameObject.GetComponent<MovmentNPC>().sentado && collision.gameObject.GetComponent<MovmentNPC>().historia)
+            {
+                readyToSpeak = true;
+            }
         }
-        if (collision.CompareTag("pessoaAentregar") && comidaAtual != null && Input.GetKey(botaointeracao)) 
+
+        if (collision.CompareTag("pessoaAentregar") && comidaAtual != null && Input.GetKey(botaointeracao))
         {
             collision.gameObject.GetComponent<MovmentNPC>().ReceberComida(comidaAtual.GetComponent<comidafeita>().comida);
-        
+
         }
         if (collision.CompareTag("pessoaAentregar2") && comidaAtual != null && Input.GetKey(botaointeracao))
         {
