@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class indicacao : MonoBehaviour
 {
+    public GameObject localficar;
     public Vector3 novaPosicao; // A nova posição para a qual o objeto irá
     public float velocidade = 2f; // Velocidade do movimento
     private Vector3 posicaoOriginal; // Posição original do objeto
@@ -11,7 +12,7 @@ public class indicacao : MonoBehaviour
 
     void Start()
     {
-        posicaoOriginal = transform.position; // Armazena a posição original
+        posicaoOriginal = localficar.transform.position; // Armazena a posição original
     }
 
     void Update()

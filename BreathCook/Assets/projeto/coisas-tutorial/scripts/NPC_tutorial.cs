@@ -21,6 +21,12 @@ public class NPC_tutorial : MonoBehaviour
     public GameObject Escuridao2;
     public GameObject ESC;
 
+    public GameObject ingrediente1;
+    public GameObject ingrediente2;
+    public GameObject ingrediente3;
+    public GameObject ingrediente4;
+
+
 
     int numero = 2;
 
@@ -116,37 +122,37 @@ public class NPC_tutorial : MonoBehaviour
             }
             if (npedido == 1)
             {
-                pedido2.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 2)
             {
-                pedido3.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 3)
             {
-                pedido4.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 4)
             {
-                pedido5.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 5)
             {
-                pedido6.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 6)
             {
-                pedido7.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
             if (npedido == 7)
             {
-                pedido8.SetActive(true);
+                pedido1.SetActive(true);
                 pensamento.SetActive(true);
             }
 
@@ -318,6 +324,18 @@ public class NPC_tutorial : MonoBehaviour
         else
         {
             cam_food_check.instance.IniciarDialogo();
+            pedido1.SetActive(false);
+            pedido2.SetActive(false);
+            pedido3.SetActive(false);
+            pedido5.SetActive(false);
+            pedido6.SetActive(false);
+            pedido7.SetActive(false);
+            pedido8.SetActive(false);
+            ingrediente1.SetActive(false);
+            ingrediente2.SetActive(false);
+            ingrediente3.SetActive(true);
+            ingrediente4.SetActive(true);
+            pedido4.SetActive(true);
         }
     }
 

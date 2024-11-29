@@ -1,16 +1,16 @@
 
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MovmentNPC : MonoBehaviour
 {
     AuudioManager audioManager;
 
     public int dialogo;
-
+    public int h = 1;
     public int wait;
 
     public List<GameObject> pedidos;
@@ -19,7 +19,7 @@ public class MovmentNPC : MonoBehaviour
 
     public int qualanimacao;
 
-    public AnimatorController[] NPCAniamtors;
+    public RuntimeAnimatorController[] NPCAniamtors;
 
     Animator animacaoATUAL;
 
@@ -66,7 +66,11 @@ public class MovmentNPC : MonoBehaviour
     public int vir_o_;
     public int numeroDialogo;
 
+    [Header("Conversa Antes")]
+    public GameObject emanuelImage;
+
     public bool historia;
+    public bool jaFalou;
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("SFX").GetComponent<AuudioManager>();
@@ -108,6 +112,8 @@ public class MovmentNPC : MonoBehaviour
             }
         }
         EspelharHorizontal();
+
+      
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -120,6 +126,10 @@ public class MovmentNPC : MonoBehaviour
             {
                 pedidos[npedido].SetActive(true);
                 pensamento.SetActive (true);
+                if (historia)
+                {
+                    emanuelImage.gameObject.SetActive(true);
+                }
             }
             Debug.Log("pedido feito");
             pedidoFT = true;
@@ -385,6 +395,7 @@ public class MovmentNPC : MonoBehaviour
                 }
                 if (pontoAtual >= GameManager.Instance.iremboraA.Length)
                 {
+
                     Destroy(gameObject);
                     comidaNaMesa.transform.position = new Vector3(900f,900f,1f);
                     pratos[numeroCadeira].transform.position = comidaNaMesa.transform.position;
@@ -399,6 +410,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -427,6 +441,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -454,6 +471,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -481,6 +501,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -508,6 +531,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -535,6 +561,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -562,6 +591,9 @@ public class MovmentNPC : MonoBehaviour
                         {
                             gerarNPC.instance.IniciarSpawn();
                             NpcDialogue.Instance.dialogoNumero++;
+                            NpcDialogue.Instance.numero = 0;
+                            NpcDialogue.Instance.h++;
+                            if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -587,8 +619,12 @@ public class MovmentNPC : MonoBehaviour
                     {
                         if (gerarNPC.instance.naoSpawn)
                         {
-                            gerarNPC.instance.IniciarSpawn();
-                            NpcDialogue.Instance.dialogoNumero++;
+                          
+                                gerarNPC.instance.IniciarSpawn();
+                                NpcDialogue.Instance.dialogoNumero++;
+                                NpcDialogue.Instance.numero = 0;
+                                NpcDialogue.Instance.h++;
+                                if (NpcDialogue.Instance.h >= 10) { final.instance.FInal = true; }
                         }
                     }
                 }
@@ -600,6 +636,11 @@ public class MovmentNPC : MonoBehaviour
     {
         if (numeroComida == npedido)
         {
+            if (historia)
+            {
+                if (emanuelImage.gameObject.activeInHierarchy)
+                    return;
+            }
             audioManager.PlaySFX(audioManager.EntregarPedido);
             Player_movement.instamce.segura = false;
             comidaNaMesa = Player_movement.instamce.comidaAtual.GetComponent<comidafeita>();

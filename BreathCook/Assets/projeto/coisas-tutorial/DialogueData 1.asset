@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   talkScript:
   - name: Cliente
-    text: "Desculpe mas eu pensei melhor e gostaria de um sandu\xEDche de salm\xE3o."
+    text: Desculpe mas eu pensei melhor e gostaria de uma salada de abacate.
   - name: "Emanuel (Voc\xEA)"
     text: "Tudo certo meu bom, seu pedido ser\xE1 feito."
   - name: O Tutor

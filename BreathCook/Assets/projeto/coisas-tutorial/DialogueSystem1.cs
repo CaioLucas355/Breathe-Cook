@@ -73,7 +73,7 @@ public class DialogueSystem1 : MonoBehaviour
     }
     void Waiting()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             if (!finished)
             {
@@ -91,7 +91,7 @@ public class DialogueSystem1 : MonoBehaviour
     }
     void Typing()
     {
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             typeText.Skip();
             state = STATE1.WAITING;

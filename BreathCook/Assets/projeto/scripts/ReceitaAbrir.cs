@@ -43,7 +43,7 @@ public class ReceitaAbrir : MonoBehaviour
     }
     public void FecharReceitas()
     {
-        audioManager.PlaySFX(audioManager.Sair);
+      
         image.SetActive(false);
         painelRC1.SetActive(false);
         painelRC2.SetActive(false);

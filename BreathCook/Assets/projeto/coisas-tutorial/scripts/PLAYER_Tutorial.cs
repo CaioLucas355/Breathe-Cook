@@ -10,6 +10,11 @@ public class PLAYER_Tutorial : MonoBehaviour
     DialogueSystem dialogueSystem;
     DialogueSystem1 dialogueSystem1;
 
+    public GameObject seta1;
+    public GameObject seta2;
+    public GameObject seta3;
+    public GameObject seta4;
+
 
     [Header("transicao")]
     public static PLAYER_Tutorial instamce;
@@ -375,7 +380,7 @@ public class PLAYER_Tutorial : MonoBehaviour
 
     }
 
-
+  
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -398,6 +403,13 @@ public class PLAYER_Tutorial : MonoBehaviour
         {
             radio.SetActive(true);
             radiofoi = true;
+            interacaoalimento5.SetActive(false);
+            interacaoalimento6.SetActive(false);
+
+            interacaoalimento1.transform.position = seta1.transform.position;
+            interacaoalimento2.transform.position = seta2.transform.position;
+            interacaoalimento3.transform.position = seta4.transform.position;
+            interacaoalimento4.transform.position = seta3.transform.position;
         }
         // comida.tasegurando == true &&
     }

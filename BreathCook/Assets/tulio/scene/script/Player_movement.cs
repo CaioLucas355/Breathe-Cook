@@ -160,6 +160,17 @@ public class Player_movement : MonoBehaviour
             movevolta = false;
         }
 
+        if (cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
+        {
+
+            
+            receitaabrir.SetActive(false);
+            receitaabrir2.SetActive(false);
+            receitaabrir3.SetActive(false);
+            ReceitaAbrir.Instance.FecharReceitas();
+
+        }
+
         if (podemovernao == true && cam.transform.position == new Vector3(0.037f, 0.11f, -11f))
         {
 
@@ -182,7 +193,7 @@ public class Player_movement : MonoBehaviour
             PauseManager.Instance.AbrirOptions();
 
         }
-
+        
     }
 
 
@@ -225,6 +236,7 @@ public class Player_movement : MonoBehaviour
             if (collision.gameObject.GetComponent<MovmentNPC>().sentado && collision.gameObject.GetComponent<MovmentNPC>().historia)
             {
                 readyToSpeak = true;
+                NpcDialogue.Instance.npc = collision.gameObject.GetComponent<MovmentNPC>();
             }
         }
 

@@ -50,16 +50,7 @@ public class word : MonoBehaviour
         }
 
 
-        if (time == 18)
-        {
-            noite.SetActive(true);
-            ta_de_noite = true;
-        }
-        if (time == 5)
-        {
-            noite.SetActive(false);
-            ta_de_noite = false;
-        }
+       
 
        StartCoroutine(tempo());
     }

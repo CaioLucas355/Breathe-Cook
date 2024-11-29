@@ -15,15 +15,15 @@ MonoBehaviour:
   talkScript:
   - name: ' O Tutor'
     text: Bem-vindo ao tutorial, WSAD e ultilizar as SETAS faz o Emmanuel andar.
-      [aperte "F" para continuar]
+      [aperte "E" para continuar]
   - name: O Tutor
     text: "Vamos Come\xE7ar o tutorial, primeiro observe o pedido do cliente no bal\xE3o
       em cima dele, depois vai at\xE9 em cima do tapete cozinha e pressione X. [aperte
-      \"F\" para continuar]"
+      \"E\" para continuar]"
   - name: O Tutor
-    text: "Para voltar aperte \"Z\".               \n[aperte \"F\" para continuar]"
+    text: "Para voltar aperte \"Z\".               \n[aperte \"E\" para continuar]"
   - name: O Tutor
-    text: Volte a cozinha para continuar o tutorial            [aperte "F" para continuar]
+    text: Volte a cozinha para continuar o tutorial [aperte "E" para continuar]
   - name: O Tutor
-    text: "Agora clique com o bot\xE3o esquerdo do no livro das entradas. (O LIVRO
-      DO MEIO)\n\t\t\t\t\t\t   \t         [aperte \"F\" para continuar]"
+    text: "Agora clique com o bot\xE3o esquerdo do no livro das bebidas. (O LIVRO
+      DA ESQUERDA)\t\t   \t         [aperte \"E\" para continuar]"
